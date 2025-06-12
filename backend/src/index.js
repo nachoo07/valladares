@@ -82,5 +82,5 @@ app.use(errorHandler);
 
 // Servidor escuchando
 app.listen(PORT, () => {
-  logger.info(`La aplicación está escuchando en el puerto ${PORT}`);
+  logger.info(`La aplicación está escuchando el puerto ${PORT}`);
 });
