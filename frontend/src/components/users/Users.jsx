@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  FaSearch, FaBars, FaTimes, FaUsers, FaClipboardList, FaMoneyBill, FaChartBar, FaExchangeAlt,
+  FaSearch, FaBars, FaList, FaTimes, FaUsers, FaClipboardList, FaMoneyBill, FaChartBar, FaExchangeAlt,
   FaCalendarCheck, FaUserCog, FaCog, FaEnvelope, FaHome, FaArrowLeft, FaUserCircle,
   FaChevronDown, FaPlus, FaEdit, FaTrash, FaTimes as FaTimesClear
 } from 'react-icons/fa';
@@ -43,7 +43,7 @@ const Users = () => {
     { name: 'Ajustes', route: '/settings', icon: <FaCog />, category: 'configuracion' },
     { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion' },
     { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList />, category: 'informes' },
-    { name: 'Volver Atrás', route: null, action: () => navigate(-1), icon: <FaArrowLeft />, category: 'navegacion' }
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   useEffect(() => {
@@ -213,7 +213,6 @@ const Users = () => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          <div className="nav-left-section"></div>
           <div className="header-logo" onClick={() => navigate('/')}>
             <img src={logo} alt="Valladares Fútbol" className="logo-image" />
           </div>

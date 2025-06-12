@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  FaSearch, FaBars, FaTimes, FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck,
+  FaSearch, FaBars, FaTimes,FaList, FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck,
   FaUserCog, FaCog, FaEnvelope, FaHome, FaClipboardList, FaArrowLeft, FaUserCircle, FaChevronDown, FaTimes as FaTimesClear
 } from 'react-icons/fa';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -15,6 +15,7 @@ import { StudentsContext } from '../../context/student/StudentContext';
 import { SharesContext } from '../../context/share/ShareContext';
 import { MotionContext } from '../../context/motion/MotionContext';
 import { LoginContext } from '../../context/login/LoginContext';
+import { PaymentContext } from '../../context/payment/PaymentContext'; // Importar PaymentContext
 import './report.css';
 import AppNavbar from '../navbar/AppNavbar';
 import logo from '../../assets/logo.png';
@@ -26,6 +27,7 @@ const Report = () => {
   const { obtenerCuotasPorFecha, obtenerCuotasPorFechaRange, cuotas, loading: loadingCuotas } = useContext(SharesContext);
   const { getMotionsByDate, getMotionsByDateRange, loading: loadingMotions } = useContext(MotionContext);
   const { auth, logout, userData } = useContext(LoginContext);
+  const { payments, fetchAllPayments, loading: loadingPayments } = useContext(PaymentContext); // Usar PaymentContext
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth >= 768);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -44,7 +46,7 @@ const Report = () => {
     { name: 'Ajustes', route: '/settings', icon: <FaCog />, category: 'configuracion' },
     { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion' },
     { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList />, category: 'informes' },
-    { name: 'Volver Atrás', route: null, action: () => navigate(-1), icon: <FaArrowLeft />, category: 'navegacion' },
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   const activos = useMemo(() => countStudentsByState('Activo') || 0, [countStudentsByState]);
@@ -54,6 +56,7 @@ const Report = () => {
   const [selectedDateReporte, setSelectedDateReporte] = useState(dayjs());
   const [selectedDateIngresos, setSelectedDateIngresos] = useState(dayjs());
   const [selectedDateEgresos, setSelectedDateEgresos] = useState(dayjs());
+  const [selectedDatePagos, setSelectedDatePagos] = useState(dayjs()); // Nuevo estado para pagos
   const [selectedMonth, setSelectedMonth] = useState(dayjs());
 
   const [data, setData] = useState({
@@ -65,6 +68,8 @@ const Report = () => {
     transferenciaIngreso: 0,
     efectivoEgreso: 0,
     transferenciaEgreso: 0,
+    efectivoPagos: 0, // Nuevo campo para pagos en efectivo
+    transferenciaPagos: 0, // Nuevo campo para pagos por transferencia
     monthlyData: {
       totalCuotas: 0,
       totalIngresos: 0,
@@ -83,7 +88,7 @@ const Report = () => {
     };
   }, [cuotas]);
 
-  const fetchDailyData = useCallback(async (dateCuotas, dateReporte, dateIngresos, dateEgresos) => {
+  const fetchDailyData = useCallback(async (dateCuotas, dateReporte, dateIngresos, dateEgresos, datePagos) => {
     const dateStrCuotas = dateCuotas.format('YYYY-MM-DD');
     const cuotasData = await obtenerCuotasPorFecha(dateStrCuotas);
     const cuotasArray = Array.isArray(cuotasData) ? cuotasData : [];
@@ -124,6 +129,21 @@ const Report = () => {
       .filter((m) => m.paymentMethod.toLowerCase() === 'transferencia' && m.incomeType === 'egreso')
       .reduce((sum, m) => sum + (m.amount || 0), 0);
 
+    // Fetch pagos
+    const dateStrPagos = datePagos.format('YYYY-MM-DD');
+    await fetchAllPayments(); // Asegura que los pagos estén cargados
+    const paymentsArray = Array.isArray(payments) ? payments : [];
+    const filteredPayments = paymentsArray.filter((p) => {
+      const paymentDate = new Date(p.paymentDate || p.date);
+      return paymentDate.toISOString().split('T')[0] === dateStrPagos;
+    });
+    const efectivoPagos = filteredPayments
+      .filter((p) => (p.paymentMethod || p.paymentmethod).toLowerCase() === 'efectivo')
+      .reduce((sum, p) => sum + (p.amount || 0), 0);
+    const transferenciaPagos = filteredPayments
+      .filter((p) => (p.paymentMethod || p.paymentmethod).toLowerCase() === 'transferencia')
+      .reduce((sum, p) => sum + (p.amount || 0), 0);
+
     setData((prev) => ({
       ...prev,
       efectivoCuotas,
@@ -134,8 +154,10 @@ const Report = () => {
       transferenciaIngreso,
       efectivoEgreso,
       transferenciaEgreso,
+      efectivoPagos,
+      transferenciaPagos,
     }));
-  }, [obtenerCuotasPorFecha, getMotionsByDate]);
+  }, [obtenerCuotasPorFecha, getMotionsByDate, fetchAllPayments]);
 
   const fetchMonthlyData = useCallback(async (month) => {
     const startOfMonth = month.startOf('month').format('YYYY-MM-DD');
@@ -174,26 +196,40 @@ const Report = () => {
       .filter((m) => m.paymentMethod.toLowerCase() === 'transferencia' && m.incomeType === 'egreso')
       .reduce((sum, m) => sum + (m.amount || 0), 0);
 
+    // Fetch pagos mensuales
+    await fetchAllPayments();
+    const paymentsArray = Array.isArray(payments) ? payments : [];
+    const filteredPayments = paymentsArray.filter((p) => {
+      const paymentDate = new Date(p.paymentDate || p.date);
+      return paymentDate >= new Date(startOfMonth) && paymentDate <= new Date(endOfMonth);
+    });
+    const efectivoPagos = filteredPayments
+      .filter((p) => (p.paymentMethod || p.paymentmethod).toLowerCase() === 'efectivo')
+      .reduce((sum, p) => sum + (p.amount || 0), 0);
+    const transferenciaPagos = filteredPayments
+      .filter((p) => (p.paymentMethod || p.paymentmethod).toLowerCase() === 'transferencia')
+      .reduce((sum, p) => sum + (p.amount || 0), 0);
+
     setData((prev) => ({
       ...prev,
       monthlyData: {
         totalCuotas,
         totalIngresos,
         totalEgresos,
-        balanceFinal: totalCuotas + totalIngresos - totalEgresos,
-        efectivoDisponible: efectivoCuotas + efectivoIngresos - efectivoEgresos,
-        transferenciaDisponible: transferenciaCuotas + transferenciaIngresos - transferenciaEgresos,
+        balanceFinal: totalCuotas + totalIngresos - totalEgresos + efectivoPagos + transferenciaPagos, // Incluir pagos
+        efectivoDisponible: efectivoCuotas + efectivoIngresos - efectivoEgresos + efectivoPagos,
+        transferenciaDisponible: transferenciaCuotas + transferenciaIngresos - transferenciaEgresos + transferenciaPagos,
       },
     }));
-  }, [obtenerCuotasPorFechaRange, getMotionsByDateRange]);
+  }, [obtenerCuotasPorFechaRange, getMotionsByDateRange, fetchAllPayments]);
 
   useEffect(() => {
     if (!hasFetched.current) {
       hasFetched.current = true;
-      fetchDailyData(selectedDateCuotas, selectedDateReporte, selectedDateIngresos, selectedDateEgresos);
+      fetchDailyData(selectedDateCuotas, selectedDateReporte, selectedDateIngresos, selectedDateEgresos, selectedDatePagos);
       fetchMonthlyData(selectedMonth);
     }
-  }, [selectedDateCuotas, selectedDateReporte, selectedDateIngresos, selectedDateEgresos, selectedMonth, fetchDailyData, fetchMonthlyData]);
+  }, [selectedDateCuotas, selectedDateReporte, selectedDateIngresos, selectedDateEgresos, selectedDatePagos, selectedMonth, fetchDailyData, fetchMonthlyData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -230,7 +266,6 @@ const Report = () => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          <div className="nav-left-section"></div>
           <div className="header-logo-setting" onClick={() => navigate('/')}>
             <img src={logo} alt="Valladares Fútbol" className="logo-image" />
           </div>
@@ -340,7 +375,7 @@ const Report = () => {
                         maxDate={dayjs()}
                         onChange={(newValue) => {
                           setSelectedDateCuotas(newValue);
-                          fetchDailyData(newValue, selectedDateReporte, selectedDateIngresos, selectedDateEgresos);
+                          fetchDailyData(newValue, selectedDateReporte, selectedDateIngresos, selectedDateEgresos, selectedDatePagos);
                         }}
                         className="custom-datepicker"
                       />
@@ -364,15 +399,15 @@ const Report = () => {
               </div>
               <div className="chart-card">
                 <div className="header-cuotas">
-                  <h3 className="titulo-cuota">Reporte Diario</h3>
+                  <h3 className="titulo-cuota">Pagos de Alumnos</h3> {/* Nueva sección para pagos */}
                   <div>
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
                       <DatePicker
-                        value={selectedDateReporte}
+                        value={selectedDatePagos}
                         maxDate={dayjs()}
                         onChange={(newValue) => {
-                          setSelectedDateReporte(newValue);
-                          fetchDailyData(selectedDateCuotas, newValue, selectedDateIngresos, selectedDateEgresos);
+                          setSelectedDatePagos(newValue);
+                          fetchDailyData(selectedDateCuotas, selectedDateReporte, selectedDateIngresos, selectedDateEgresos, newValue);
                         }}
                         className="custom-datepicker"
                       />
@@ -381,16 +416,16 @@ const Report = () => {
                 </div>
                 <div className="chart-stats">
                   <div className="stat-item">
-                    <span className="stat-label">Ingreso:</span>
-                    <span className="stat-value">${data.ingreso.toLocaleString('es-ES')}</span>
+                    <span className="stat-label">Efectivo:</span>
+                    <span className="stat-value">${data.efectivoPagos.toLocaleString('es-ES')}</span>
                   </div>
                   <div className="stat-item">
-                    <span className="stat-label">Egreso:</span>
-                    <span className="stat-value">${data.egreso.toLocaleString('es-ES')}</span>
+                    <span className="stat-label">Transferencia:</span>
+                    <span className="stat-value">${data.transferenciaPagos.toLocaleString('es-ES')}</span>
                   </div>
                   <div className="stat-item">
                     <span className="stat-label">Total:</span>
-                    <span className="stat-value">${(data.ingreso - data.egreso).toLocaleString('es-ES')}</span>
+                    <span className="stat-value">${(data.efectivoPagos + data.transferenciaPagos).toLocaleString('es-ES')}</span>
                   </div>
                 </div>
               </div>
@@ -406,7 +441,7 @@ const Report = () => {
                         maxDate={dayjs()}
                         onChange={(newValue) => {
                           setSelectedDateIngresos(newValue);
-                          fetchDailyData(selectedDateCuotas, selectedDateReporte, newValue, selectedDateEgresos);
+                          fetchDailyData(selectedDateCuotas, selectedDateReporte, newValue, selectedDateEgresos, selectedDatePagos);
                         }}
                         className="custom-datepicker"
                       />
@@ -438,7 +473,7 @@ const Report = () => {
                         maxDate={dayjs()}
                         onChange={(newValue) => {
                           setSelectedDateEgresos(newValue);
-                          fetchDailyData(selectedDateCuotas, selectedDateReporte, selectedDateIngresos, newValue);
+                          fetchDailyData(selectedDateCuotas, selectedDateReporte, selectedDateIngresos, newValue, selectedDatePagos);
                         }}
                         className="custom-datepicker"
                       />

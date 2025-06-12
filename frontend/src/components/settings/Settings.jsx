@@ -4,7 +4,7 @@ import { LoginContext } from '../../context/login/LoginContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {
-  FaBars, FaUsers, FaMoneyBill, FaClipboardList, FaChartBar, FaExchangeAlt, FaCalendarCheck,
+  FaBars, FaUsers, FaMoneyBill, FaList, FaClipboardList, FaChartBar, FaExchangeAlt, FaCalendarCheck,
   FaUserCog, FaCog, FaEnvelope, FaHome, FaArrowLeft, FaInfoCircle, FaUserCircle,
   FaChevronDown, FaTimes, FaSearch, FaTimes as FaTimesClear
 } from 'react-icons/fa';
@@ -38,7 +38,7 @@ const Settings = () => {
     { name: 'Ajustes', route: '/settings', icon: <FaCog /> },
     { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope /> },
     { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList />, category: 'informes' },
-    { name: 'Volver Atrás', route: null, action: () => navigate(-1), icon: <FaArrowLeft /> }
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   useEffect(() => {
@@ -150,7 +150,7 @@ const Settings = () => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          <div className="nav-left-section"></div>
+          
           <div className="header-logo-setting" onClick={() => navigate('/')}>
             <img src={logo} alt="Valladares Fútbol" className="logo-image" />
           </div>

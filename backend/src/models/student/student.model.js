@@ -82,7 +82,17 @@ const studentSchema = new mongoose.Schema({
     trim: true,
     set: (v) => (v ? sanitizeHtml(v) : undefined),
   },
-  // New medical fields (no defaults)
+  turno: { // Campo opcional
+    type: String,
+    enum: {
+      values: ['A', 'B'],
+      message: 'Turno must be either A or B.',
+    },
+    trim: true,
+    set: (v) => (v ? sanitizeHtml(v) : undefined),
+    default: '', // Valor por defecto opcional
+  },
+  // Campos médicos existentes
   isAsthmatic: {
     type: Boolean,
   },
@@ -110,7 +120,6 @@ const studentSchema = new mongoose.Schema({
     set: (v) => (v ? sanitizeHtml(v) : undefined),
     validate: {
       validator: function (v) {
-        // allergyDetails is required only if isAllergic is true
         return !this.isAllergic || (v && v.length > 0);
       },
       message: 'Allergy details are required if the student is allergic.',
@@ -125,7 +134,6 @@ const studentSchema = new mongoose.Schema({
     set: (v) => (v ? sanitizeHtml(v) : undefined),
     validate: {
       validator: function (v) {
-        // medicationDetails is required only if takesMedication is true
         return !this.takesMedication || (v && v.length > 0);
       },
       message: 'Medication details are required if the student takes medication.',

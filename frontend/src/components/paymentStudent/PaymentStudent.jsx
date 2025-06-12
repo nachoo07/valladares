@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   FaBars,
+  FaList,
   FaTimes,
   FaUsers,
   FaBell,
@@ -70,7 +71,7 @@ const PaymentStudent = () => {
     { name: "Ajustes", route: "/settings", icon: <FaCog />, category: "configuracion" },
     { name: "Envios de Mail", route: "/email-notifications", icon: <FaEnvelope />, category: "comunicacion" },
     { name: "Listado de Alumnos", route: "/liststudent", icon: <FaClipboardList />, category: "informes" },
-    { name: "Volver Atrás", route: null, action: () => navigate(-1), icon: <FaArrowLeft />, category: "navegacion" },
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   useEffect(() => {

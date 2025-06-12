@@ -8,7 +8,7 @@ export const SharesContext = createContext();
 const SharesProvider = ({ children }) => {
   const [cuotas, setCuotas] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { auth, waitForAuth } = useContext(LoginContext); // Añadimos waitForAuth
+  const { auth, waitForAuth } = useContext(LoginContext);
 
   const obtenerCuotas = useCallback(async () => {
     if (auth !== "admin") return;
@@ -35,10 +35,7 @@ const SharesProvider = ({ children }) => {
         withCredentials: true,
       });
       const data = Array.isArray(response.data) ? response.data : [];
-      setCuotas((prev) => [
-        ...prev.filter((cuota) => cuota.student?._id !== studentId),
-        ...data,
-      ]);
+      setCuotas((prev) => [...prev.filter((cuota) => cuota.student?._id !== studentId), ...data]);
     } catch (error) {
       console.error("Error obteniendo cuotas por estudiante:", error);
       Swal.fire("¡Error!", "No se pudieron obtener las cuotas del estudiante.", "error");
@@ -107,43 +104,51 @@ const SharesProvider = ({ children }) => {
 
   const obtenerCuotasPorFecha = useCallback(async (fecha) => {
     try {
+      setLoading(true);
+      setCuotas([]); // Reinicia el estado antes de cargar nuevos datos
       const response = await axios.get(`/api/shares/date/${fecha}`, {
         withCredentials: true,
       });
       const data = Array.isArray(response.data) ? response.data : [];
-      setCuotas((prev) => [...prev.filter((c) => new Date(c.date).toISOString().split('T')[0] !== fecha), ...data]);
+      setCuotas(data);
       return data;
     } catch (error) {
       console.error('Error obteniendo cuotas por fecha:', error);
       Swal.fire('¡Error!', 'No se pudieron obtener las cuotas por fecha.', 'error');
       return [];
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   const obtenerCuotasPorFechaRange = useCallback(async (startDate, endDate) => {
     try {
+      setLoading(true);
+      setCuotas([]); // Reinicia el estado
       const response = await axios.get(`/api/shares/date-range?startDate=${startDate}&endDate=${endDate}`, {
         withCredentials: true,
       });
       const data = Array.isArray(response.data) ? response.data : [];
-      setCuotas((prev) => [...prev, ...data]);
+      setCuotas(data);
       return data;
     } catch (error) {
       console.error('Error obteniendo cuotas por rango de fechas:', error);
       Swal.fire('¡Error!', 'No se pudieron obtener las cuotas por rango de fechas.', 'error');
       return [];
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
-      await waitForAuth(); // Espera a que la autenticación esté lista
+      await waitForAuth();
       if (auth === "admin") {
         await obtenerCuotas();
       }
     };
     fetchData();
-  }, [auth, obtenerCuotas, waitForAuth]); // Añadimos waitForAuth como dependencia
+  }, [auth, obtenerCuotas, waitForAuth]);
 
   return (
     <SharesContext.Provider
@@ -157,6 +162,7 @@ const SharesProvider = ({ children }) => {
         updateCuota,
         obtenerCuotasPorFecha,
         obtenerCuotasPorFechaRange,
+        setCuotas, // Añadimos setCuotas al contexto
       }}
     >
       {children}

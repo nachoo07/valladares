@@ -34,7 +34,6 @@ const UsersProvider = ({ children }) => {
           password: usuario.password,
           role: usuario.role,
         };
-        console.log("Datos enviados para crear usuario:", usuarioData);
         const response = await axios.post(
           "/api/users/create",
           usuarioData,
@@ -64,7 +63,6 @@ const UsersProvider = ({ children }) => {
           role: usuarioActualizado.role,
           state: usuarioActualizado.state,
         };
-        console.log("Datos enviados para actualizar usuario:", usuarioData);
         const response = await axios.put(
           `/api/users/update/${id}`,
           usuarioData,

@@ -117,9 +117,7 @@
   transition: var(--transition);
 }
 
-.header-logo-setting {
-  margin-right: 880px;
-}
+
 
 .save-button {
   background: #04a45c;

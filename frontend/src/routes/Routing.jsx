@@ -19,6 +19,7 @@ import EmailNotification from '../components/email/EmailNotification'; // Nueva 
 import PageDetailShare from '../pages/detailShare/PageDetailShare';
 import PagePaymentStudent from '../pages/payment/PagePaymentStudent';
 import PageListaStudent from '../pages/listStudent/PageListaStudent';
+import PageListEconomic from '../pages/listEconomic/PageListEconomic';
 
 const Routing = () => {
   const { auth } = useContext(LoginContext);
@@ -66,6 +67,10 @@ const Routing = () => {
       <Route
         path="/detailstudent/:id"
         element={<ProtectedRoute element={<PageDetail />} role="admin" />}
+      />
+       <Route
+        path="/listeconomic"
+        element={<ProtectedRoute element={<PageListEconomic />} role="admin" />}
       />
       <Route
         path="/share"

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
-  FaSearch, FaBars, FaTimes, FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt,
+  FaSearch, FaBars, FaTimes, FaList, FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt,
   FaCalendarCheck, FaUserCog, FaCog, FaEnvelope, FaClipboardList, FaHome, FaArrowLeft, FaUserCircle,
   FaChevronDown, FaEdit, FaTrash, FaMoneyBillWave, FaPlus, FaSpinner
 } from "react-icons/fa";
@@ -20,6 +20,7 @@ const ShareDetail = () => {
   const { auth, logout, userData } = useContext(LoginContext);
   const { studentId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const hasFetched = useRef(false);
   const [filteredData, setFilteredData] = useState([]);
   const [selectedCuota, setSelectedCuota] = useState(null);
@@ -32,9 +33,13 @@ const ShareDetail = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [sendingCuotaId, setSendingCuotaId] = useState(null); // Estado para rastrear qué cuota se está enviando
+  const [sendingCuotaId, setSendingCuotaId] = useState(null);
   const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   const availableYears = ["2025", "2026", "2027"];
+
+  // Leer el parámetro 'page' de la URL
+  const queryParams = new URLSearchParams(location.search);
+  const page = queryParams.get('page') || 1;
 
   const menuItems = [
     { name: "Inicio", route: "/", icon: <FaHome />, category: "principal" },
@@ -47,7 +52,7 @@ const ShareDetail = () => {
     { name: "Ajustes", route: "/settings", icon: <FaCog />, category: "configuracion" },
     { name: "Envios de Mail", route: "/email-notifications", icon: <FaEnvelope />, category: "comunicacion" },
     { name: "Listado de Alumnos", route: "/liststudent", icon: <FaClipboardList />, category: "informes" },
-    { name: "Volver Atrás", route: null, action: () => navigate(-1), icon: <FaArrowLeft />, category: "navegacion" },
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   useEffect(() => {
@@ -141,17 +146,12 @@ const ShareDetail = () => {
     setSendingCuotaId(null);
   };
 
-  // Reemplaza la función formatDate existente con esta:
-
   const formatDate = (dateString) => {
     if (!dateString) return "-";
-
-    // Para evitar problemas con zonas horarias, trabajamos con el string directamente
     const [year, month, day] = dateString.split('T')[0].split('-');
-
-    // Devolvemos la fecha en formato DD-MM-YYYY
     return `${day}-${month}-${year}`;
   };
+
   const formatMonth = (dateString) => months[new Date(dateString).getMonth()];
 
   const usedMonths = filteredData.map((cuota) => new Date(cuota.date).getMonth() + 1);
@@ -175,6 +175,8 @@ const ShareDetail = () => {
     setIsProfileOpen(false);
   };
 
+  const handleBack = () => navigate(`/share?page=${page}`);
+
   return (
     <div className="app-container">
       {windowWidth <= 576 && (
@@ -185,7 +187,6 @@ const ShareDetail = () => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          <div className="nav-left-section"></div>
           <div className="header-logo-setting" onClick={() => navigate('/')}>
             <img src={logo} alt="Valladares Fútbol" className="logo-image" />
           </div>
@@ -289,7 +290,7 @@ const ShareDetail = () => {
                     <button className="add-btn" onClick={handleCreateClick}>
                       <FaPlus /> Crear Cuota
                     </button>
-                    <button className="back-btn" onClick={() => navigate(-1)}>
+                    <button className="back-btn" onClick={handleBack}>
                       Volver
                     </button>
                   </div>

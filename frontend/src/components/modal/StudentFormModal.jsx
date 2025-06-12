@@ -171,18 +171,18 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
               className="form-control-custom"
             />
           </Form.Group>
-          <Form.Group controlId="formBirthDate" className="studentFormModal-form-group">
-            <Form.Label>Fecha de Nacimiento</Form.Label>
-            <Form.Control
-              type="date"
-              name="birthDate"
-              value={formData.birthDate || ''}
-              onChange={handleChange}
-              max={today}
-              required
-              className="form-control-custom"
-            />
-          </Form.Group>
+   <Form.Group controlId="formBirthDate" className="studentFormModal-form-group">
+  <Form.Label>Fecha de Nacimiento</Form.Label>
+  <Form.Control
+    type="date"
+    name="dateInputValue"
+    value={formData.dateInputValue || ''}
+    onChange={handleChange}
+    max={today}
+    required
+    className="form-control-custom"
+  />
+</Form.Group>
           <Form.Group controlId="formDireccion" className="studentFormModal-form-group">
             <Form.Label>Dirección</Form.Label>
             <Form.Control
@@ -235,6 +235,20 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
               <option value="" disabled>Seleccione un club</option>
               <option value="Valladares">Valladares</option>
               <option value="El Palmar">El Palmar</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="formTurno" className="studentFormModal-form-group">
+            <Form.Label>Turno</Form.Label>
+            <Form.Control
+              as="select"
+              name="turno"
+              value={formData.turno || ''}
+              onChange={handleChange}
+              className="form-control-custom"
+            >
+              <option value="">Ninguno</option>
+              <option value="A">Turno A</option>
+              <option value="B">Turno B</option>
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="formGuardianName" className="studentFormModal-form-group">

@@ -5,27 +5,9 @@ import { EmailContext } from "../../context/email/EmailContext";
 import { LoginContext } from "../../context/login/LoginContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {
-  FaBars,
-  FaUsers,
-  FaMoneyBill,
-  FaChartBar,
-  FaExchangeAlt,
-  FaCalendarCheck,
-  FaUserCog,
-  FaCog,
-  FaEnvelope,
-  FaHome,
-  FaClipboardList,
-  FaSearch,
-  FaArrowLeft,
-  FaTimes,
-  FaCheck,
-  FaTrash,
-  FaUserCircle,
-  FaChevronDown,
-  FaTimes as FaTimesClear,
-} from "react-icons/fa";
+import { FaBars, FaUsers, FaMoneyBill, FaList, FaChartBar, FaExchangeAlt, FaCalendarCheck, FaUserCog,
+  FaCog, FaEnvelope, FaHome, FaClipboardList, FaSearch, FaArrowLeft, FaTimes, FaCheck,
+  FaTrash, FaUserCircle, FaChevronDown, FaTimes as FaTimesClear,} from "react-icons/fa";
 import Swal from "sweetalert2";
 import "./emailNotification.css";
 import AppNavbar from "../navbar/AppNavbar";
@@ -77,7 +59,7 @@ const EmailNotification = () => {
     { name: "Ajustes", route: "/settings", icon: <FaCog /> },
     { name: "Envios de Mail", route: "/email-notifications", icon: <FaEnvelope /> },
     { name: "Listado de Alumnos", route: "/liststudent", icon: <FaClipboardList /> },
-    { name: "Volver Atrás", route: null, action: () => navigate(-1), icon: <FaArrowLeft /> },
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   useEffect(() => {
@@ -382,7 +364,7 @@ const EmailNotification = () => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          <div className="nav-left-section"></div>
+       
           <div className="header-logo" onClick={() => navigate('/')}>
             <img src={logo} alt="Valladares Fútbol" className="logo-image" />
           </div>
@@ -477,7 +459,6 @@ const EmailNotification = () => {
             </div>
           </section>
           <section className="student-selection">
-            <h2 className="section-title">Seleccionar Estudiantes</h2>
             <div className="search-container">
               <FaSearch className="search-icon" />
               <input

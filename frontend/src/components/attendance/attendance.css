@@ -7,8 +7,10 @@
 .search-container {
   position: relative;
   width: 100%;
-  max-width: 500px; /* Limitar el ancho en pantallas grandes */
-  margin: 0 auto; /* Centrar el buscador */
+  max-width: 500px;
+  /* Limitar el ancho en pantallas grandes */
+  margin: 0 auto;
+  /* Centrar el buscador */
 }
 
 .search-icon {
@@ -76,27 +78,97 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegurar que ocupe toda la altura de la pantalla */
+  width: 100%;
+  background-color: var(--background-color, #f5f5f5);
+}
+
+.app-container.mobile-view {
+  padding: 0; /* Eliminar padding en móvil */
+  margin: 0; /* Eliminar márgenes */
+}
+
 .main-content {
   flex-grow: 1;
   padding: 20px;
   margin-left: 240px;
-  overflow-y: auto;
+
   background-color: var(--background-color);
   transition: margin-left var(--transition);
 }
 
 .main-content.expanded {
-  margin-left: var(--sidebar-collapsed);
+  margin-left: var(--sidebar-collapsed, 60px);
 }
 
 .dashboard-welcome {
   margin-bottom: 20px;
 }
 
-.welcome-text-attendance h1{
+.welcome-text-attendance h1 {
   font-size: 34px;
   font-weight: 600;
   color: var(--text-color);
+}
+
+.attendance-clubs {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.attendance-clubss {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.attendance-clubss h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.attendance-titulo-club {
+  font-size: 30px !important;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 0px !important;
+
+}
+
+.club-btn {
+  padding: 0.3rem 0.6rem;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  border: 3px solid #04a45c;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 20px;
+}
+
+.club-btn:hover {
+  background-color: #04a45c;
+  color: white;
+}
+
+.change-club-btn {
+  background-color: white;
+}
+
+.change-club-btn:hover {
+  background-color: #04a45c;
 }
 
 .attendance-categories {
@@ -105,6 +177,14 @@
   gap: 15px;
   margin-bottom: 30px;
   padding: 20px;
+}
+
+.attendance-categories h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .category-btn {
@@ -116,15 +196,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: var(--transition);
-  font-size: 22px;
-}
-
-.attendance-categories h3 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
-  width: 100%;
+  font-size: 18px;
 }
 
 .category-btn:hover {
@@ -141,14 +213,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+
 }
 
 .attendance-date-input {
   padding: 8px;
-  font-size: 14px;
+  font-size: 18px;
   border: 1px solid #ccc;
   border-radius: 5px;
+
 }
 
 .attendance-today-btn {
@@ -163,6 +236,23 @@
 }
 
 .attendance-today-btn:hover {
+  background-color: #1b5930;
+}
+
+.attendance-report-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #04a45c;
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.attendance-report-btn:hover {
   background-color: #1b5930;
 }
 
@@ -242,8 +332,19 @@
 
 .disabled-checkbox {
   background-color: var(--background-alt);
+  width: 20px;
+  height: 20px;
   cursor: not-allowed;
 }
+
+.activated-checkbox {
+  background-color: var(--background-alt);
+  width: 20px;
+  height: 20px;
+  cursor: not-allowed;
+}
+
+
 
 .attendance-cancel-btn {
   background-color: #04a45c;
@@ -254,83 +355,183 @@
 .attendance-save-btn:hover,
 .attendance-edit-btn:hover,
 .attendance-update-btn:hover,
-.attendance-cancel-btn:hover {
+.attendance-cancel-btn:hover,
+.attendance-report-btn:hover {
   background-color: #1b5930;
 }
 
-.dashboard-layout{
+.dashboard-layout {
   margin-top: 0px;
 }
 
-.attendance-clubs {
+.modal-overlay-attendance {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
   align-items: center;
+  z-index: 1000;
 }
 
-.attendance-clubs h2 {
-  font-size: 1.5rem;
+.modal-content-attendance {
+  padding: 20px !important;
+  background-color: #f9f9f9 !important;
+}
+
+.modal-header-attendance {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 10px !important;
+  background-color: #04a45c !important;
+  border-bottom: 1px solid #ccc !important;
+}
+
+.modal-body-attendance {
+  padding: 20px !important;
+  background-color: #f9f9f9 !important;
+}
+
+.modal-footer-attendance {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px !important;
+  background: #f1f1f1 !important;
+  margin-top: 0px !important;
+}
+
+.modal-form-attendance {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group-attendance {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group-attendance label {
+  font-size: 1rem;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.modal-date-input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
   width: 100%;
 }
 
-.club-btn {
-  padding: 0.5rem 1rem;
+.modal-select-attendance {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-cancel-btn,
+.modal-generate-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
   font-weight: bold;
-  background-color: white;
-  border: none;
-  border-radius: 20px;
-  border: 3px solid #04a45c;
-  color: var(--text-color);
   cursor: pointer;
   transition: var(--transition);
-  font-size: 22px;
+  font-size: 16px;
+  border: none;
 }
 
-.attendance-titulo-club{
-  font-size: 34px !important;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
-  width: 100%;
+.modal-cancel-btn {
+  background-color: #ccc;
+  color: var(--text-color);
 }
 
-.club-btn:hover {
+.modal-cancel-btn:hover {
+  background-color: #bbb;
+}
+
+.modal-generate-btn {
   background-color: #04a45c;
   color: white;
 }
 
-.change-club-btn {
-  background-color: white;
+.modal-generate-btn:hover {
+  background-color: #1b5930;
 }
 
-.change-club-btn:hover {
-  background-color: #04a45c;
+.attendance-header {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  margin-bottom: 20px;
 }
+
+.attendance-search-container {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  gap: 10px;
+}
+
 
 @media (max-width: 576px) {
   .sidebar {
     display: none;
   }
 
+ .app-container.mobile-view {
+    min-height: 100vh; /* Forzar altura completa */
+    height: auto; /* Ajustar altura automáticamente */
+
+  }
+
   .main-content {
     margin-left: 0;
     padding: 10px;
+    width: 100%; /* Asegurar que ocupe todo el ancho */
+    min-height: calc(100vh - 55px); /* Ajustar según el navbar móvil (55px estimado) */
+  
   }
 
   .welcome-text-attendance h1 {
     font-size: 1.4rem;
     text-align: center;
+    margin-bottom: 10px;
   }
 
-  .attendance-titulo-club{
-  font-size: 1.4rem !important;
+  .attendance-titulo-club {
+    font-size: 1.1rem !important;
+    margin-top: 0px !important;
+  }
 
+  .attendance-clubs {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .dashboard-modules {
+    height: 100%;
+    max-height: 740px;
+    
   }
 
   .attendance-clubs h2 {
@@ -340,34 +541,30 @@
     margin-bottom: 10px;
   }
 
-
-.club-btn {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  background-color: white;
-  border: none;
-  border-radius: 20px;
-  border: 3px solid #04a45c;
-  color: var(--text-color);
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 16px;
-}
+  .club-btn {
+    padding: 0.3rem 0.6rem;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    border: 3px solid #04a45c;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+  }
 
   .attendance-categories {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr !important;
+    /* Una sola columna */
     padding: 0;
     gap: 10px;
   }
 
-  .category-btn {
-    padding: 10px;
-    font-size: 16px;
-  }
-
   .attendance-date-picker {
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -375,6 +572,11 @@
 
   .attendance-date-input {
     width: 100%;
+  }
+
+  .attendance-today-btn {
+    width: 100%;
+    font-size: 16px;
   }
 
   .attendance-table th,
@@ -415,7 +617,50 @@
     font-size: 0.8rem;
   }
 
-  .dashboard-layout{
-  margin-top: 55px;
-}
+  .dashboard-layout {
+    margin-top: 55px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .modal-date-input,
+  .modal-select-attendance {
+    font-size: 12px;
+  }
+
+  .modal-cancel-btn,
+  .modal-generate-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .report-text {
+    display: none;
+  }
+
+  .attendance-report-btn {
+    padding: 8px 12px;
+    width: 100px !important;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .attendance-header {
+    gap: 8px;
+  }
+
+  .attendance-search-container {
+    display: flex;
+    
+    gap: 8px;
+  }
 }

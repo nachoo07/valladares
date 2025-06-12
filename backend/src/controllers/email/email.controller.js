@@ -228,7 +228,7 @@ export const sendEmail = async (req, res) => {
       });
 
       const mailOptions = {
-        from: `"Yo Claudio" <${process.env.EMAIL_USER}>`,
+        from: `"Valladares" <${process.env.EMAIL_USER}>`,
         to: recipient,
         subject,
         html: sanitizedMessage,

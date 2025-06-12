@@ -85,3 +85,30 @@
     margin-left: 500px;
     
 }
+
+@media (max-width: 576px) {
+    .login-page-form-wrapper {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        
+    }
+
+    .login-page-form {
+        align-items: center !important;
+        margin-left: 0;
+    }
+
+    .login-page-logo {
+        width: 200px;
+        height: 150px;
+        margin-left: 0;
+        text-align: center !important;
+    }
+
+    .login-page-logo-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}

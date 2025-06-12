@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes, FaUsers, FaSearch, FaClipboardList, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck, FaUserCog, FaCog, FaEnvelope, FaHome, FaArrowLeft, FaFileInvoice, FaSun, FaMoon, FaUserCircle, FaChevronDown, FaTimes as FaTimesClear } from 'react-icons/fa';
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { FaBars, FaTimes, FaUsers, FaSearch, FaList, FaClipboardList, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck, FaUserCog, FaCog, FaEnvelope, FaHome, FaArrowLeft, FaFileInvoice, FaSun, FaMoon, FaUserCircle, FaChevronDown, FaTimes as FaTimesClear } from 'react-icons/fa';
 import { StudentsContext } from "../../context/student/StudentContext";
 import { LoginContext } from "../../context/login/LoginContext";
 import "./detailStudent.css";
@@ -12,6 +12,7 @@ const StudentDetail = () => {
   const { logout, userData } = useContext(LoginContext);
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [student, setStudent] = useState(null);
   const profileRef = useRef(null);
   const [imageError, setImageError] = useState(false);
@@ -19,6 +20,10 @@ const StudentDetail = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Leer el parámetro 'page' de la URL
+  const queryParams = new URLSearchParams(location.search);
+  const page = queryParams.get('page') || 1;
 
   const menuItems = [
     { name: 'Inicio', route: '/', icon: <FaHome />, category: 'principal' },
@@ -31,7 +36,7 @@ const StudentDetail = () => {
     { name: 'Ajustes', route: '/settings', icon: <FaCog />, category: 'configuracion' },
     { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion' },
     { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList />, category: 'informes' },
-    { name: 'Volver Atrás', route: null, action: () => navigate(-1), icon: <FaArrowLeft />, category: 'navegacion' }
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   useEffect(() => {
@@ -98,6 +103,10 @@ const StudentDetail = () => {
     setSearchTerm(e.target.value);
   };
 
+  const handleBack = () => {
+    navigate(`/student?page=${page}`);
+  };
+
   return (
     <div className={`app-container ${windowWidth <= 576 ? 'mobile-view' : ''}`}>
       {windowWidth <= 576 && (
@@ -108,7 +117,6 @@ const StudentDetail = () => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          <div className="nav-left-section"></div>
           <div className="header-logo-setting" onClick={() => navigate('/')}>
             <img src={logo} alt="Valladares Fútbol" className="logo-image" />
           </div>
@@ -174,7 +182,7 @@ const StudentDetail = () => {
                   <li
                     key={index}
                     className={`sidebar-menu-item ${item.route === '/student' ? 'active' : ''}`}
-                    onClick={() => item.action ? item.action() : navigate(item.route)}
+                    onClick={() => item.action ? navigate(item.id) : navigate(item.route)}
                   >
                     <span className="menu-icon">{item.icon}</span>
                     <span className="menu-text">{item.name}</span>
@@ -205,7 +213,7 @@ const StudentDetail = () => {
                   <button className="action-btn-header" onClick={handleViewPayments}>
                     Ver Pagos
                   </button>
-                  <button className="action-btn-header" onClick={() => navigate(-1)}>
+                  <button className="action-btn-header" onClick={handleBack}>
                     <FaArrowLeft /> Volver Atrás
                   </button>
                 </div>
@@ -251,7 +259,7 @@ const StudentDetail = () => {
                 <div className="details-row">
                   <div className="form-group">
                     <label className="label-text">Asmático</label>
-                    <input type="text" value={student.isAsthmatic === undefined ? 'No especificado' : student.isAsthmatic ? 'Sí' : 'No'} readOnly className="form-control-custom" />
+                    <input type="text" value={student.isAsthmatic ? 'Sí' : 'No'} readOnly className="form-control-custom" />
                   </div>
                   <div className="form-group">
                     <label className="label-text">Dolores de Cabeza</label>
@@ -314,6 +322,10 @@ const StudentDetail = () => {
                     <div className="form-group">
                       <label className="label-text">Club</label>
                       <input type="text" value={student.club || ''} readOnly className="form-control-custom" />
+                    </div>
+                    <div className="form-group">
+                      <label className="label-text">Turno</label>
+                      <input type="text" value={student.turno || ''} readOnly className="form-control-custom" />
                     </div>
                     <div className="form-group">
                       <label className="label-text">Descuento por Hermanos</label>

@@ -21,7 +21,6 @@ const ShareFormModal = ({
 
   // Cargar datos del formulario cuando se edita una cuota
   useEffect(() => {
-    console.log("ShareFormModal: Recibido selectedCuota:", selectedCuota);
     if (show && selectedCuota && selectedCuota._id) {
       setAmount(selectedCuota.amount?.toString() || "");
       setDate(selectedCuota.paymentdate ? formatDate(selectedCuota.paymentdate) : "");

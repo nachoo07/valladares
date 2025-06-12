@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck,
+  FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck, FaList,
   FaUserCog, FaCog, FaEnvelope, FaBars, FaTimes, FaSearch, FaUserCircle, FaChevronDown, FaEllipsisH, FaClipboardList 
 } from 'react-icons/fa';
 import { LoginContext } from '../../context/login/LoginContext';
@@ -62,6 +62,7 @@ const Home = () => {
     { name: 'Usuarios', route: '/user', icon: <FaUserCog />, category: 'configuracion' },
     { name: 'Ajustes', route: '/settings', icon: <FaCog />, category: 'configuracion' },
     { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion' },
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' },
     { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList  />, category: 'informes' }
   ];
 

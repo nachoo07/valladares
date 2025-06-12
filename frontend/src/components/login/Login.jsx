@@ -27,7 +27,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-       
+
         try {
             const role = await login(email, password);
             if (role === 'admin') {
@@ -43,40 +43,42 @@ const Login = () => {
 
     return (
         <div className="login-page-container">
-        <div className="login-page-form-wrapper">
-           
-          
-            <img src={logo} alt="Logo" className="login-page-logo" />
-            <Form onSubmit={handleSubmit} className="login-page-form">
-           
-                <Form.Group className="mb-3 login-page-form-input" controlId="exampleForm.ControlInput1">
-                    <Form.Label className="login-page-form-label">Usuario</Form.Label>
+            <div className="login-page-form-wrapper">
+                <div className="login-page-logo-container">
+                    <img src={logo} alt="Logo" className="login-page-logo" />
+                </div>
+
+                <Form onSubmit={handleSubmit} className="login-page-form">
+
+                    <Form.Group className="login-page-form-input" controlId="exampleForm.ControlInput1">
+                        <Form.Label className="login-page-form-label">Usuario</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder=""
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                   
+                    <Form.Label htmlFor="inputPassword5" className="login-page-form-label">Contraseña</Form.Label>
                     <Form.Control
-                        type="email"
-                        placeholder=""
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="password"
+                        id="inputPassword5"
+                        className="mb-3 login-page-form-input"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                </Form.Group>
-                <Form.Label htmlFor="inputPassword5" className="login-page-form-label">Contraseña</Form.Label>
-                <Form.Control
-                    type="password"
-                    id="inputPassword5"
-                    className="mb-3 login-page-form-input"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <div className="login-page-button-container">
-                    <Button variant="primary" type="submit" className="login-page-submit-button">
-                        Iniciar sesión
-                    </Button>
-                </div>
-            </Form>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    <div className="login-page-button-container">
+                        <Button variant="primary" type="submit" className="login-page-submit-button">
+                            Iniciar sesión
+                        </Button>
+                    </div>
+                     </Form.Group>
+                </Form>
+            </div>
         </div>
-    </div>
     );
 };
 

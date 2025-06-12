@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LoginContext } from '../../context/login/LoginContext';
-import { FaUserCircle, FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck, FaUserCog, FaCog, FaEnvelope,FaClipboardList, FaChevronDown, FaHome } from 'react-icons/fa';
+import { FaUserCircle, FaUsers,FaList, FaMoneyBill, FaChartBar, FaExchangeAlt, FaCalendarCheck, FaUserCog, FaCog, FaEnvelope,FaClipboardList, FaChevronDown, FaHome } from 'react-icons/fa';
 import './navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -34,7 +34,8 @@ const AppNavbar = ({ setIsMenuOpen, isMenuOpen }) => {
     { name: 'Usuarios', route: '/user', icon: <FaUserCog />, category: 'configuracion' },
     { name: 'Ajustes', route: '/settings', icon: <FaCog />, category: 'configuracion' },
     { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList  />, category: 'informes' },
-    { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion' }
+    { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion' },
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
   ];
 
   const handleMenuItemClick = (route) => {

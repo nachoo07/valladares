@@ -1,0 +1,604 @@
+{"level":50,"time":1749673144810,"pid":32355,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir archivo Excel"}
+{"level":50,"time":1749673213832,"pid":32355,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir archivo Excel"}
+{"level":50,"time":1749673647444,"pid":32355,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir archivo Excel"}
+{"level":50,"time":1749673677867,"pid":32355,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir archivo Excel"}
+{"level":50,"time":1749673755653,"pid":33175,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir archivo Excel"}
+{"level":30,"time":1749673824602,"pid":33224,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749673824602,"pid":33224,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario sin tiÌtulo (Respuestas).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6783 bytes"}
+{"level":30,"time":1749673824619,"pid":33224,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749673824619,"pid":33224,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":50,"time":1749673824619,"pid":33224,"hostname":"Ignacios-MacBook-Air.local","msg":"Faltan columnas requeridas: CUIL, Dirección, Categoría"}
+{"level":30,"time":1749679616733,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749679616734,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario sin tiÌtulo (Respuestas) (2).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6608 bytes"}
+{"level":30,"time":1749679616763,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749679616763,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749679616766,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749679616766,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749679616771,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749679616771,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749679616797,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749679616797,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749679684498,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","studentId":"6849fe00efbeab3b70211862","msg":"Estudiante eliminado"}
+{"level":30,"time":1749679689977,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749679689977,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario sin tiÌtulo (Respuestas).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6783 bytes"}
+{"level":30,"time":1749679689984,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749679689984,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":50,"time":1749679689984,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Faltan columnas requeridas: DNI, Dirección, Categoría"}
+{"level":30,"time":1749679799953,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749679799954,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario.xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6784 bytes"}
+{"level":30,"time":1749679799959,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749679799959,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":50,"time":1749679799959,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Faltan columnas requeridas: Dirección, Categoría"}
+{"level":30,"time":1749679915452,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749679915452,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario.xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6787 bytes"}
+{"level":30,"time":1749679915462,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749679915463,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749679915472,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749679915472,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749679915474,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749679915478,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749679918596,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749679918596,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749679922018,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749679922018,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749679922020,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749679922020,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749679922031,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749679922032,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749680039694,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","studentId":"6849ff32efbeab3b7021186a","msg":"Estudiante eliminado"}
+{"level":30,"time":1749680044167,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749680044167,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario.xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6787 bytes"}
+{"level":30,"time":1749680044173,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749680044173,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749680044176,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749680044176,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749680044176,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680044176,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680046934,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680046935,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749680050015,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749680050015,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749680050015,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749680050015,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749680050024,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749680050024,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749680061812,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","studentId":"6849ffb2efbeab3b70211872","msg":"Estudiante eliminado"}
+{"level":30,"time":1749680076740,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749680076740,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (1).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6791 bytes"}
+{"level":30,"time":1749680076748,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749680076749,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749680076755,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749680076755,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749680076756,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680076756,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680079815,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680079816,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749680083422,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749680083422,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749680083422,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749680083422,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749680083509,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749680083509,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749680873935,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","studentId":"6849ffd3efbeab3b7021187a","msg":"Estudiante eliminado"}
+{"level":30,"time":1749680882566,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749680882566,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (1).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6791 bytes"}
+{"level":30,"time":1749680882574,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749680882574,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749680882583,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749680882583,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749680882584,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680882584,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680885478,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749680885479,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749680888972,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749680888972,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749680888972,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749680888972,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749680888991,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749680888991,"pid":35718,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749682726920,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a02f8efbeab3b70211888","msg":"Estudiante eliminado"}
+{"level":30,"time":1749682745669,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749682745670,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (2).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6791 bytes"}
+{"level":30,"time":1749682745710,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749682745711,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749682746110,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749682746111,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749682746117,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749682746117,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749682748918,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749682748918,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749682752136,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749682752136,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749682752137,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749682752137,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749682752187,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749682752187,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749682892806,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a0a40f74b02a31c9570af","msg":"Estudiante eliminado"}
+{"level":30,"time":1749682898769,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749682898769,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (3).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6807 bytes"}
+{"level":30,"time":1749682898775,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749682898775,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749682898779,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749682898779,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749682898779,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749682898779,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749682901581,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749682901582,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749682904662,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749682904662,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749682904662,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749682904662,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749682904679,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749682904679,"pid":37194,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749683547126,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a0ad8f74b02a31c9570bd","msg":"Estudiante eliminado"}
+{"level":30,"time":1749683568404,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749683568405,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (4).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6950 bytes"}
+{"level":30,"time":1749683568425,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749683568426,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749683568432,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749683568432,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":40,"time":1749683568433,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha inválida: 37659"}
+{"level":50,"time":1749683568433,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2: Error inesperado (str.trim is not a function)"}
+{"level":30,"time":1749683568434,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Generando CSV de errores: 1 errores"}
+{"level":30,"time":1749683568434,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 0 importados, 1 errores"}
+{"level":30,"time":1749683605041,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749683605041,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (4).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6950 bytes"}
+{"level":30,"time":1749683605049,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749683605049,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749683605054,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749683605054,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":40,"time":1749683605055,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha inválida: 37659"}
+{"level":50,"time":1749683605055,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2: Error inesperado (str.trim is not a function)"}
+{"level":30,"time":1749683605055,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Generando CSV de errores: 1 errores"}
+{"level":30,"time":1749683605055,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 0 importados, 1 errores"}
+{"level":30,"time":1749683615040,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749683615040,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (3).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6807 bytes"}
+{"level":30,"time":1749683615049,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749683615049,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749683615051,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749683615051,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":40,"time":1749683615052,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha inválida: 37659"}
+{"level":50,"time":1749683615052,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2: Error inesperado (str.trim is not a function)"}
+{"level":30,"time":1749683615052,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Generando CSV de errores: 1 errores"}
+{"level":30,"time":1749683615052,"pid":37542,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 0 importados, 1 errores"}
+{"level":30,"time":1749683629701,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749683629701,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (4).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6950 bytes"}
+{"level":30,"time":1749683629721,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749683629722,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749683629744,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749683629745,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749683629747,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749683629747,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749683633004,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749683633004,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749683637203,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749683637203,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749683637204,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749683637204,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749683637243,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749683637243,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":30,"time":1749683702038,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a0db5037766edd739b3b5","msg":"Estudiante eliminado"}
+{"level":30,"time":1749683724627,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Iniciando importación de estudiantes"}
+{"level":30,"time":1749683724627,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Archivo recibido: Formulario (5).xlsx, tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, tamaño: 6950 bytes"}
+{"level":30,"time":1749683724636,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Hojas encontradas: Respuestas de formulario 1"}
+{"level":30,"time":1749683724636,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Filas en la hoja: 1"}
+{"level":30,"time":1749683724642,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando 1 filas"}
+{"level":30,"time":1749683724642,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando fila 2"}
+{"level":30,"time":1749683724643,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Descargando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749683724643,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Intentando descargar imagen: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749683727674,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen descargada exitosamente: https://drive.google.com/uc?export=download&id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749683727674,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Subiendo imagen a Cloudinary: students/profile-44638387"}
+{"level":30,"time":1749683730702,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida exitosamente: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749683730702,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749679921/students/profile/students/profile-44638387.png"}
+{"level":30,"time":1749683730702,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Fila 2 validada exitosamente"}
+{"level":30,"time":1749683730702,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertando 1 estudiantes en la base de datos"}
+{"level":30,"time":1749683730715,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Insertados 1 estudiantes"}
+{"level":30,"time":1749683730715,"pid":37619,"hostname":"Ignacios-MacBook-Air.local","msg":"Importación completada: 1 importados, 0 errores"}
+{"level":50,"time":1749686046420,"pid":37992,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir imagen"}
+{"level":50,"time":1749686099576,"pid":37992,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir imagen"}
+{"level":50,"time":1749686226656,"pid":37992,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir imagen"}
+{"level":50,"time":1749686329264,"pid":37992,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir imagen"}
+{"level":50,"time":1749686388422,"pid":38786,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir imagen"}
+{"level":50,"time":1749686849785,"pid":39074,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir imagen"}
+{"level":50,"time":1749687179339,"pid":39074,"hostname":"Ignacios-MacBook-Air.local","error":"Unexpected end of form","msg":"Error al subir imagen"}
+{"level":50,"time":1749692057933,"pid":40113,"hostname":"Ignacios-MacBook-Air.local","error":"Cast to ObjectId failed for value \"cloudinary-signature\" (type string) at path \"_id\" for model \"Student\"","msg":"Error al obtener estudiante"}
+{"level":50,"time":1749692488825,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","error":"Cast to ObjectId failed for value \"cloudinary-signature\" (type string) at path \"_id\" for model \"Student\"","msg":"Error al obtener estudiante"}
+{"level":30,"time":1749692520486,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-06 como yyyy-MM-dd -> 2003-02-06"}
+{"level":30,"time":1749692520507,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a0e12037766edd739b3bd","msg":"Estudiante actualizado"}
+{"level":30,"time":1749692535886,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2025-05-31 como yyyy-MM-dd -> 2025-05-31"}
+{"level":30,"time":1749692536011,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","studentId":"683ef5dd5fe71da13f019115","msg":"Estudiante actualizado"}
+{"level":50,"time":1749692548642,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","error":"Cast to ObjectId failed for value \"cloudinary-signature\" (type string) at path \"_id\" for model \"Student\"","msg":"Error al obtener estudiante"}
+{"level":30,"time":1749692558098,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-05 como yyyy-MM-dd -> 2003-02-05"}
+{"level":30,"time":1749692558123,"pid":40898,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a0e12037766edd739b3bd","msg":"Estudiante actualizado"}
+{"level":30,"time":1749692743387,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-04 como yyyy-MM-dd -> 2003-02-04"}
+{"level":30,"time":1749692743406,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a0e12037766edd739b3bd","msg":"Estudiante actualizado"}
+{"level":30,"time":1749692794131,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2010-02-23 como yyyy-MM-dd -> 2010-02-23"}
+{"level":30,"time":1749692794149,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"683e418083192a3b0893289c","msg":"Estudiante actualizado"}
+{"level":30,"time":1749692898338,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2020-04-30 como yyyy-MM-dd -> 2020-04-30"}
+{"level":30,"time":1749692898364,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a31e2943bf955d734db0c","msg":"Estudiante creado"}
+{"level":30,"time":1749692918676,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2020-04-28 como yyyy-MM-dd -> 2020-04-28"}
+{"level":30,"time":1749692918696,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a31e2943bf955d734db0c","msg":"Estudiante actualizado"}
+{"level":30,"time":1749692932081,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2020-04-14 como yyyy-MM-dd -> 2020-04-14"}
+{"level":30,"time":1749692932090,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a31e2943bf955d734db0c","msg":"Estudiante actualizado"}
+{"level":30,"time":1749692984019,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2020-04-14 como yyyy-MM-dd -> 2020-04-14"}
+{"level":30,"time":1749692984097,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a31e2943bf955d734db0c","msg":"Estudiante actualizado"}
+{"level":30,"time":1749693004705,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a0e12037766edd739b3bd","msg":"Estudiante eliminado"}
+{"level":30,"time":1749693887699,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749693887772,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749693917147,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a35bf943bf955d734db24","msg":"Estudiante eliminado"}
+{"level":30,"time":1749693922323,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749693922331,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749693951600,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a35e2943bf955d734db2b","msg":"Estudiante eliminado"}
+{"level":30,"time":1749693956575,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749693956582,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749694041853,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a3604943bf955d734db32","msg":"Estudiante eliminado"}
+{"level":30,"time":1749694048152,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749694048204,"pid":41030,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749729386074,"pid":43303,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-05 como yyyy-MM-dd -> 2003-02-05"}
+{"level":30,"time":1749729386102,"pid":43303,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a3660943bf955d734db39","msg":"Estudiante actualizado"}
+{"level":30,"time":1749729656652,"pid":43702,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749729656679,"pid":43702,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638387: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638387\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749730466375,"pid":43927,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a3660943bf955d734db39","msg":"Estudiante eliminado"}
+{"level":30,"time":1749730472127,"pid":43927,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749730472128,"pid":43927,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando estudiante con DNI 44638387, profileImage: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749730472145,"pid":43927,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749730794725,"pid":44117,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ac4a8335bb0888bbc1aff","msg":"Estudiante eliminado"}
+{"level":30,"time":1749730810813,"pid":44117,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749730810813,"pid":44117,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749730823254,"pid":44117,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749730822/students/student_44638387.png"}
+{"level":30,"time":1749730823273,"pid":44117,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749730995712,"pid":44117,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-06 como yyyy-MM-dd -> 2003-02-06"}
+{"level":30,"time":1749730995725,"pid":44117,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ac607833f7c31da15b586","msg":"Estudiante actualizado"}
+{"level":30,"time":1749731410203,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-05 como yyyy-MM-dd -> 2003-02-05"}
+{"level":30,"time":1749731411231,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen antigua eliminada de Cloudinary para estudiante con ID 684ac607833f7c31da15b586: students/ibtlfqfx1maaq4ja9jkp"}
+{"level":30,"time":1749731413686,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Nueva imagen subida a Cloudinary para estudiante con ID 684ac607833f7c31da15b586: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749731413/students/student_44638387.png"}
+{"level":30,"time":1749731413711,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ac607833f7c31da15b586","msg":"Estudiante actualizado"}
+{"level":30,"time":1749731485589,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-06 como yyyy-MM-dd -> 2003-02-06"}
+{"level":30,"time":1749731486392,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen antigua eliminada de Cloudinary para estudiante con ID 684ac607833f7c31da15b586: students/student_44638387"}
+{"level":30,"time":1749731488065,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Nueva imagen subida a Cloudinary para estudiante con ID 684ac607833f7c31da15b586: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749731487/students/student_44638387.png"}
+{"level":30,"time":1749731488071,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ac607833f7c31da15b586","msg":"Estudiante actualizado"}
+{"level":30,"time":1749731540044,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684ac607833f7c31da15b586: students/student_44638387"}
+{"level":30,"time":1749731540070,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ac607833f7c31da15b586","msg":"Estudiante eliminado"}
+{"level":30,"time":1749731580567,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749731580568,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749731586981,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749731586/students/student_44638387.png"}
+{"level":30,"time":1749731586996,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749731614704,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-06 como yyyy-MM-dd -> 2003-02-06"}
+{"level":30,"time":1749731615838,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen antigua eliminada de Cloudinary para estudiante con ID 684ac9028145b72f0e3c2474: students/student_44638387"}
+{"level":30,"time":1749731617355,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Nueva imagen subida a Cloudinary para estudiante con ID 684ac9028145b72f0e3c2474: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749731617/students/student_44638387.png"}
+{"level":30,"time":1749731617358,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ac9028145b72f0e3c2474","msg":"Estudiante actualizado"}
+{"level":30,"time":1749731711370,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684ac9028145b72f0e3c2474: students/student_44638387"}
+{"level":30,"time":1749731711399,"pid":44368,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ac9028145b72f0e3c2474","msg":"Estudiante eliminado"}
+{"level":30,"time":1749732062129,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749732062129,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749732068500,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749732067/students/student_44638387.png"}
+{"level":30,"time":1749732068536,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749732088090,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-06 como yyyy-MM-dd -> 2003-02-06"}
+{"level":30,"time":1749732089105,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen antigua eliminada de Cloudinary para estudiante con ID 684acae4ad4fbb5f5fd54c4a: students/student_44638387"}
+{"level":30,"time":1749732090060,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Nueva imagen subida desde archivo a Cloudinary para estudiante con ID 684acae4ad4fbb5f5fd54c4a: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749732089/students/student_44638387.png"}
+{"level":30,"time":1749732090084,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","studentId":"684acae4ad4fbb5f5fd54c4a","msg":"Estudiante actualizado"}
+{"level":30,"time":1749732100555,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684acae4ad4fbb5f5fd54c4a: students/student_44638387"}
+{"level":30,"time":1749732100576,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","studentId":"684acae4ad4fbb5f5fd54c4a","msg":"Estudiante eliminado"}
+{"level":30,"time":1749732165086,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para estudiante con DNI 22468683: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749732164/students/student_22468683.png"}
+{"level":30,"time":1749732165088,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2007-01-31 como yyyy-MM-dd -> 2007-01-31"}
+{"level":30,"time":1749732165095,"pid":44609,"hostname":"Ignacios-MacBook-Air.local","studentId":"684acb45ad4fbb5f5fd54c53","msg":"Estudiante creado"}
+{"level":30,"time":1749734571972,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2007-02-01 como yyyy-MM-dd -> 2007-02-01"}
+{"level":30,"time":1749734571995,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684acb45ad4fbb5f5fd54c53","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749734601587,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2010-02-24 como yyyy-MM-dd -> 2010-02-24"}
+{"level":30,"time":1749734601608,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"683e418083192a3b0893289c","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749734629103,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749734629103,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749734635889,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749734635/students/student_44638387.png"}
+{"level":30,"time":1749734635922,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749735229714,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-12 como yyyy-MM-dd -> 2003-02-12"}
+{"level":30,"time":1749735229747,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad4ebf4617c106eed61f9","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749735254107,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-13 como yyyy-MM-dd -> 2003-02-13"}
+{"level":30,"time":1749735254111,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad4ebf4617c106eed61f9","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749735640007,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-14 como yyyy-MM-dd -> 2003-02-14"}
+{"level":30,"time":1749735640023,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad4ebf4617c106eed61f9","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749735706894,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-14 como yyyy-MM-dd -> 2003-02-14"}
+{"level":30,"time":1749735706899,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad4ebf4617c106eed61f9","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749735736700,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-15 como yyyy-MM-dd -> 2003-02-15"}
+{"level":30,"time":1749735736703,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad4ebf4617c106eed61f9","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749735791862,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-13 como yyyy-MM-dd -> 2003-02-13"}
+{"level":30,"time":1749735791865,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad4ebf4617c106eed61f9","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749735805905,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684ad4ebf4617c106eed61f9: students/student_44638387"}
+{"level":30,"time":1749735805921,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad4ebf4617c106eed61f9","msg":"Estudiante eliminado"}
+{"level":30,"time":1749735811922,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749735811922,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638387: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749735818514,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638387: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749735817/students/student_44638387.png"}
+{"level":30,"time":1749735818526,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749735901518,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-08 como yyyy-MM-dd -> 2003-02-08"}
+{"level":30,"time":1749735901528,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad98af4617c106eed623e","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749736124981,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-08 como yyyy-MM-dd -> 2003-02-08"}
+{"level":30,"time":1749736124990,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad98af4617c106eed623e","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749736149911,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-04 como yyyy-MM-dd -> 2003-02-04"}
+{"level":30,"time":1749736149916,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad98af4617c106eed623e","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749736583987,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-06 como yyyy-MM-dd -> 2003-02-06"}
+{"level":30,"time":1749736583997,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad98af4617c106eed623e","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749736603651,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2010-02-05 como yyyy-MM-dd -> 2010-02-05"}
+{"level":30,"time":1749736603654,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"683e418083192a3b0893289c","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749736655605,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684ad98af4617c106eed623e: students/student_44638387"}
+{"level":30,"time":1749736655617,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ad98af4617c106eed623e","msg":"Estudiante eliminado"}
+{"level":30,"time":1749736719059,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para estudiante con DNI 88635352: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749736718/students/student_88635352.png"}
+{"level":30,"time":1749736719060,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2000-02-01 como yyyy-MM-dd -> 2000-02-01"}
+{"level":30,"time":1749736719067,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","studentId":"684add0ff4617c106eed626d","msg":"Estudiante creado con éxito"}
+{"level":30,"time":1749736830709,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 446383: DNI debe contener 8 a 10 dígitos"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749737032767,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para estudiante con DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749737032/students/student_44638382.jpg"}
+{"level":30,"time":1749737790483,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 446383: DNI debe contener 8 a 10 dígitos"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749737987118,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 446383: DNI debe contener 8 a 10 dígitos"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749738015146,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749738015146,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749738021216,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738020/students/student_44638382.png"}
+{"level":30,"time":1749738021246,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638382: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749738048192,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749738048193,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749738053705,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738020/students/student_44638382.png"}
+{"level":30,"time":1749738053712,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638382: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749738581400,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749738581400,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749738588027,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738020/students/student_44638382.png"}
+{"level":30,"time":1749738588053,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638382: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749738600188,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 446383: DNI debe contener 8 a 10 dígitos"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749738629584,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para estudiante con DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738629/students/student_44638382.jpg"}
+{"level":30,"time":1749738629585,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2025-06-11 como yyyy-MM-dd -> 2025-06-11"}
+{"level":50,"time":1749738629592,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","error":"E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }","msg":"Error al crear estudiante"}
+{"level":30,"time":1749738684082,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749738684082,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749738690523,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738689/students/student_44638382.png"}
+{"level":30,"time":1749738690546,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638382: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749738703269,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749738703269,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749738710197,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738689/students/student_44638382.png"}
+{"level":30,"time":1749738710288,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638382: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749738743445,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749738743445,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749738750431,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738749/students/student_44638382.png"}
+{"level":30,"time":1749738750444,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638382: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749739106189,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749739106189,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749739112899,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749738749/students/student_44638382.png"}
+{"level":30,"time":1749739113324,"pid":45532,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Estudiante con DNI 44638382: E11000 duplicate key error collection: valladaresfutbol_db.students index: dni_1 dup key: { dni: \"44638382\" }"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749739202500,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749739202534,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Fila 2, DNI 44638382: DNI ya existe"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749739259851,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749739259856,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Fila 2, DNI 44638382: DNI ya existe"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749739285042,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749739285049,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Fila 2, DNI 44638382: DNI ya existe"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749739369904,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749739369905,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749739370207,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638380, Fila 3: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749739376256,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638380, Fila 3: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749739375/students/student_44638380.png"}
+{"level":30,"time":1749739376291,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":["Fila 2, DNI 44638382: DNI ya existe"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749741366790,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741366790,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741366791,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741366791,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741366791,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741367368,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741367370,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638384, Fila 6: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749741367399,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741367399,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638383, Fila 5: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749741367400,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638381, Fila 4: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749741367401,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638386, Fila 8: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749741367402,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638385, Fila 7: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":50,"time":1749741372383,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al subir imagen a Cloudinary: undefined"}
+{"level":50,"time":1749741372383,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638385, Fila 7: Error al subir imagen: undefined"}
+{"level":30,"time":1749741372383,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741372386,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638387, Fila 9: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":50,"time":1749741373114,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al subir imagen a Cloudinary: undefined"}
+{"level":50,"time":1749741373114,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638381, Fila 4: Error al subir imagen: undefined"}
+{"level":30,"time":1749741373114,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741373115,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638388, Fila 10: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":50,"time":1749741373306,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al subir imagen a Cloudinary: undefined"}
+{"level":50,"time":1749741373306,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638384, Fila 6: Error al subir imagen: undefined"}
+{"level":30,"time":1749741373306,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":50,"time":1749741373307,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al subir imagen a Cloudinary: undefined"}
+{"level":50,"time":1749741373307,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638386, Fila 8: Error al subir imagen: undefined"}
+{"level":30,"time":1749741373307,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741373308,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638389, Fila 11: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749741373309,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638300, Fila 12: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":50,"time":1749741374205,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al subir imagen a Cloudinary: undefined"}
+{"level":50,"time":1749741374205,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638383, Fila 5: Error al subir imagen: undefined"}
+{"level":30,"time":1749741374205,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749741374207,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638301, Fila 13: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":50,"time":1749741377790,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al subir imagen a Cloudinary: undefined"}
+{"level":50,"time":1749741377790,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638301, Fila 13: Error al subir imagen: undefined"}
+{"level":30,"time":1749741381555,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638388, Fila 10: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749741381/students/student_44638388.png"}
+{"level":30,"time":1749741382869,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638387, Fila 9: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749741382/students/student_44638387.png"}
+{"level":30,"time":1749741382874,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638300, Fila 12: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749741382/students/student_44638300.png"}
+{"level":30,"time":1749741383112,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638389, Fila 11: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749741382/students/student_44638389.png"}
+{"level":30,"time":1749741383114,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","importedCount":4,"errors":["Fila 2, DNI 44638382: DNI ya existe","Fila 3, DNI 44638380: DNI ya existe","Fila 7, DNI 44638385: Error al procesar la imagen - Error al subir imagen: undefined","Fila 4, DNI 44638381: Error al procesar la imagen - Error al subir imagen: undefined","Fila 6, DNI 44638384: Error al procesar la imagen - Error al subir imagen: undefined","Fila 8, DNI 44638386: Error al procesar la imagen - Error al subir imagen: undefined","Fila 5, DNI 44638383: Error al procesar la imagen - Error al subir imagen: undefined","Fila 13, DNI 44638301: Error al procesar la imagen - Error al subir imagen: undefined"],"msg":"Importación de estudiantes procesada"}
+{"level":50,"time":1749741603486,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para ID 684aef4704c82d3ee3c82d64: urlParts[(urlParts.length - 1)].split(...).split is not a function"}
+{"level":30,"time":1749741668185,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-09 como yyyy-MM-dd -> 2003-02-09"}
+{"level":30,"time":1749741668215,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","studentId":"684aef4704c82d3ee3c82d64","msg":"Estudiante actualizado con éxito"}
+{"level":50,"time":1749741713640,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para ID 684a31e2943bf955d734db0c: urlParts[(urlParts.length - 1)].split(...).split is not a function"}
+{"level":50,"time":1749741749024,"pid":47374,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para ID 684add0ff4617c106eed626d: urlParts[(urlParts.length - 1)].split(...).split is not a function"}
+{"level":50,"time":1749742026817,"pid":48421,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para ID 684aef4704c82d3ee3c82d64: Cannot read properties of undefined (reading 'split')"}
+{"level":50,"time":1749742155389,"pid":48421,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para ID 684add0ff4617c106eed626d: Cannot read properties of undefined (reading 'split')"}
+{"level":50,"time":1749742254827,"pid":48567,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para ID 684aef4704c82d3ee3c82d64: urlParts[(urlParts.length - 1)].split(...).split is not a function"}
+{"level":30,"time":1749742545205,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen antigua eliminada de Cloudinary para ID 684add0ff4617c106eed626d: students/student_88635352"}
+{"level":30,"time":1749742547284,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Nueva imagen subida desde archivo para ID 684add0ff4617c106eed626d: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742546/students/student_88635352.png"}
+{"level":30,"time":1749742547290,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2000-02-01 como yyyy-MM-dd -> 2000-02-01"}
+{"level":30,"time":1749742547326,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"684add0ff4617c106eed626d","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749742560981,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684aef4704c82d3ee3c82d64: students/student_44638389"}
+{"level":30,"time":1749742561002,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"684aef4704c82d3ee3c82d64","msg":"Estudiante eliminado"}
+{"level":30,"time":1749742564464,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684aef4604c82d3ee3c82d62: students/student_44638300"}
+{"level":30,"time":1749742564477,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"684aef4604c82d3ee3c82d62","msg":"Estudiante eliminado"}
+{"level":30,"time":1749742567405,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684aef4604c82d3ee3c82d60: students/student_44638387"}
+{"level":30,"time":1749742567413,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"684aef4604c82d3ee3c82d60","msg":"Estudiante eliminado"}
+{"level":30,"time":1749742573424,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684aef4504c82d3ee3c82d5e: students/student_44638388"}
+{"level":30,"time":1749742573451,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"684aef4504c82d3ee3c82d5e","msg":"Estudiante eliminado"}
+{"level":30,"time":1749742577396,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684ae77004c82d3ee3c82d48: students/student_44638380"}
+{"level":30,"time":1749742577410,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"684ae77004c82d3ee3c82d48","msg":"Estudiante eliminado"}
+{"level":30,"time":1749742607559,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen antigua eliminada de Cloudinary para ID 683e418083192a3b0893289c: students/zvlspknpgqymsoux9h41"}
+{"level":30,"time":1749742609268,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Nueva imagen subida desde archivo para ID 683e418083192a3b0893289c: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742609/students/student_44638382.png"}
+{"level":30,"time":1749742609269,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2010-02-05 como yyyy-MM-dd -> 2010-02-05"}
+{"level":30,"time":1749742609282,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"683e418083192a3b0893289c","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749742646624,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742646625,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742646625,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742646625,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742646625,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742646893,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638380, Fila 3: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742646903,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638381, Fila 4: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742646906,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742646907,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638384, Fila 6: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742646910,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638383, Fila 5: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742646911,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638385, Fila 7: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742653218,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638381, Fila 4: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742652/students/student_44638381.png"}
+{"level":30,"time":1749742653235,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742653237,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638386, Fila 8: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742653317,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638385, Fila 7: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742653/students/student_44638385.png"}
+{"level":30,"time":1749742653322,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742653323,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638387, Fila 9: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742653444,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638383, Fila 5: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742652/students/student_44638383.png"}
+{"level":30,"time":1749742653448,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742653449,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638388, Fila 10: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742653452,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638380, Fila 3: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742653/students/student_44638380.png"}
+{"level":30,"time":1749742653454,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742653456,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638389, Fila 11: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742653523,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638384, Fila 6: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742653/students/student_44638384.png"}
+{"level":30,"time":1749742653527,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742653528,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638300, Fila 12: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":50,"time":1749742658464,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al descargar imagen: timeout of 5000ms exceeded"}
+{"level":50,"time":1749742658465,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638389, Fila 11: timeout of 5000ms exceeded"}
+{"level":30,"time":1749742658465,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742658469,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638301, Fila 13: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742659221,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638388, Fila 10: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742658/students/student_44638388.png"}
+{"level":30,"time":1749742659877,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638387, Fila 9: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742659/students/student_44638387.png"}
+{"level":30,"time":1749742660344,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638300, Fila 12: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742659/students/student_44638300.png"}
+{"level":30,"time":1749742662077,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638386, Fila 8: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742660/students/student_44638386.png"}
+{"level":30,"time":1749742664157,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638301, Fila 13: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742663/students/student_44638301.png"}
+{"level":30,"time":1749742664162,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","importedCount":10,"errors":["Fila 2, DNI 44638382: DNI ya existe","Fila 11, DNI 44638389: Error al procesar la imagen - timeout of 5000ms exceeded"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749742697800,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697801,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697801,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697801,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697802,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697809,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697810,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697813,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697814,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697816,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697817,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697820,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749742697824,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638389, Fila 11: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749742703724,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638389, Fila 11: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749742703/students/student_44638389.png"}
+{"level":30,"time":1749742703736,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":["Fila 4, DNI 44638381: DNI ya existe","Fila 6, DNI 44638384: DNI ya existe","Fila 2, DNI 44638382: DNI ya existe","Fila 5, DNI 44638383: DNI ya existe","Fila 3, DNI 44638380: DNI ya existe","Fila 8, DNI 44638386: DNI ya existe","Fila 9, DNI 44638387: DNI ya existe","Fila 10, DNI 44638388: DNI ya existe","Fila 7, DNI 44638385: DNI ya existe","Fila 12, DNI 44638300: DNI ya existe","Fila 13, DNI 44638301: DNI ya existe"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749742780944,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af46fb045e49fc9c31181: students/student_44638389"}
+{"level":30,"time":1749742781125,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af46fb045e49fc9c31181","msg":"Estudiante eliminado"}
+{"level":30,"time":1749743026929,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 683e418083192a3b0893289c: students/student_44638382"}
+{"level":30,"time":1749743027037,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","studentId":"683e418083192a3b0893289c","msg":"Estudiante eliminado"}
+{"level":30,"time":1749743056575,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056576,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056576,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056576,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056576,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056581,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056581,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749743056585,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056586,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056586,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056587,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056587,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056587,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749743056588,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638389, Fila 11: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749743062127,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638389, Fila 11: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749743061/students/student_44638389.png"}
+{"level":30,"time":1749743063187,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749743062/students/student_44638382.png"}
+{"level":30,"time":1749743063202,"pid":48818,"hostname":"Ignacios-MacBook-Air.local","importedCount":2,"errors":["Fila 5, DNI 44638383: DNI ya existe","Fila 4, DNI 44638381: DNI ya existe","Fila 6, DNI 44638384: DNI ya existe","Fila 3, DNI 44638380: DNI ya existe","Fila 8, DNI 44638386: DNI ya existe","Fila 9, DNI 44638387: DNI ya existe","Fila 7, DNI 44638385: DNI ya existe","Fila 12, DNI 44638300: DNI ya existe","Fila 10, DNI 44638388: DNI ya existe","Fila 13, DNI 44638301: DNI ya existe"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749743626267,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-13 como yyyy-MM-dd -> 2003-02-13"}
+{"level":30,"time":1749743626278,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af5d7b045e49fc9c311b5","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749744231326,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-14 como yyyy-MM-dd -> 2003-02-14"}
+{"level":30,"time":1749744231338,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af5d7b045e49fc9c311b5","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749744243509,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-15 como yyyy-MM-dd -> 2003-02-15"}
+{"level":30,"time":1749744243514,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af5d7b045e49fc9c311b5","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749745176888,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af5d7b045e49fc9c311b5: students/student_44638382"}
+{"level":30,"time":1749745176914,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af5d7b045e49fc9c311b5","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745198168,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af443b045e49fc9c3116b: students/student_44638388"}
+{"level":30,"time":1749745198185,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af443b045e49fc9c3116b","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745202035,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af443b045e49fc9c3116d: students/student_44638387"}
+{"level":30,"time":1749745202042,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af443b045e49fc9c3116d","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745204418,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af444b045e49fc9c3116f: students/student_44638300"}
+{"level":30,"time":1749745204440,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af444b045e49fc9c3116f","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745207581,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af446b045e49fc9c31171: students/student_44638386"}
+{"level":30,"time":1749745207592,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af446b045e49fc9c31171","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745210931,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af448b045e49fc9c31173: students/student_44638301"}
+{"level":30,"time":1749745210950,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af448b045e49fc9c31173","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745214756,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af5d6b045e49fc9c311b3: students/student_44638389"}
+{"level":30,"time":1749745214764,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af5d6b045e49fc9c311b3","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745216999,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af43db045e49fc9c31167: students/student_44638384"}
+{"level":30,"time":1749745217009,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af43db045e49fc9c31167","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745221000,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af43db045e49fc9c31164: students/student_44638380"}
+{"level":30,"time":1749745221011,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af43db045e49fc9c31164","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745224066,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af43db045e49fc9c31161: students/student_44638383"}
+{"level":30,"time":1749745224072,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af43db045e49fc9c31161","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745227174,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af43db045e49fc9c3115e: students/student_44638385"}
+{"level":30,"time":1749745227179,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af43db045e49fc9c3115e","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745230623,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684af43db045e49fc9c3115b: students/student_44638381"}
+{"level":30,"time":1749745230631,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684af43db045e49fc9c3115b","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745233288,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684add0ff4617c106eed626d: students/student_88635352"}
+{"level":30,"time":1749745233296,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684add0ff4617c106eed626d","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745236159,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684acb45ad4fbb5f5fd54c53: students/student_22468683"}
+{"level":30,"time":1749745236171,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684acb45ad4fbb5f5fd54c53","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745238550,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684a31e2943bf955d734db0c: students/quvxjndzdf4qe1bamldu"}
+{"level":30,"time":1749745238563,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684a31e2943bf955d734db0c","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745240774,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"683ef5dd5fe71da13f019115","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745353589,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Fila 2, DNI 446383: DNI debe contener 8 a 10 dígitos"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749745361113,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749745361127,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749745368454,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749745367/students/student_44638382.png"}
+{"level":30,"time":1749745368483,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749745902845,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684afed880adcd6c7f854033: students/student_44638382"}
+{"level":30,"time":1749745902931,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684afed880adcd6c7f854033","msg":"Estudiante eliminado"}
+{"level":30,"time":1749745909112,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749745909153,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749745917938,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749745917/students/student_44638382.png"}
+{"level":30,"time":1749745917973,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749746183060,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684b00fd80adcd6c7f854061: students/student_44638382"}
+{"level":30,"time":1749746183099,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b00fd80adcd6c7f854061","msg":"Estudiante eliminado"}
+{"level":30,"time":1749746188059,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749746188066,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749746194677,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749746194/students/student_44638382.png"}
+{"level":30,"time":1749746194710,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749746254433,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684b021280adcd6c7f854087: students/student_44638382"}
+{"level":30,"time":1749746254444,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b021280adcd6c7f854087","msg":"Estudiante eliminado"}
+{"level":30,"time":1749746259551,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749746259622,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749746268918,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749746268/students/student_44638382.png"}
+{"level":30,"time":1749746268930,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749749285711,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para estudiante con DNI 66383832: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749749285/students/student_66383832.jpg"}
+{"level":30,"time":1749749285713,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2000-02-01 como yyyy-MM-dd -> 2000-02-01"}
+{"level":30,"time":1749749285742,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b0e2580adcd6c7f8540af","msg":"Estudiante creado con éxito"}
+{"level":30,"time":1749749852630,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684b0e2580adcd6c7f8540af: students/student_66383832"}
+{"level":30,"time":1749749852680,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b0e2580adcd6c7f8540af","msg":"Estudiante eliminado"}
+{"level":30,"time":1749749856719,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684b025c80adcd6c7f85409b: students/student_44638382"}
+{"level":30,"time":1749749856727,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b025c80adcd6c7f85409b","msg":"Estudiante eliminado"}
+{"level":30,"time":1749749867081,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749749867091,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749749880011,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749749875/students/student_44638382.png"}
+{"level":30,"time":1749749880031,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749750118023,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684b107880adcd6c7f8540c4: students/student_44638382"}
+{"level":30,"time":1749750118076,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b107880adcd6c7f8540c4","msg":"Estudiante eliminado"}
+{"level":30,"time":1749750125787,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749750125795,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":50,"time":1749750129899,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al subir imagen a Cloudinary: undefined"}
+{"level":50,"time":1749750129899,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Error al procesar imagen para DNI 44638382, Fila 2: Error al subir imagen: undefined"}
+{"level":30,"time":1749750129899,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":0,"errors":["Fila 2, DNI 44638382: Error al procesar la imagen - Error al subir imagen: undefined"],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749750161525,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749750161532,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749750167697,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749750167/students/student_44638382.png"}
+{"level":30,"time":1749750167718,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":1,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749750197526,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-08 como yyyy-MM-dd -> 2003-02-08"}
+{"level":30,"time":1749750197548,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b119780adcd6c7f8540d3","msg":"Estudiante actualizado con éxito"}
+{"level":30,"time":1749750219425,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen eliminada de Cloudinary para estudiante con ID 684b119780adcd6c7f8540d3: students/student_44638382"}
+{"level":30,"time":1749750219437,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b119780adcd6c7f8540d3","msg":"Estudiante eliminado"}
+{"level":30,"time":1749750337404,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749750337405,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749750337439,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638382, Fila 2: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749750337453,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Procesando imagen para DNI 44638380, Fila 3: https://drive.google.com/open?id=10C37E0xFw2vnaAPpMLlDZ0LLUUC6n-fh"}
+{"level":30,"time":1749750343051,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638382, Fila 2: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749750342/students/student_44638382.png"}
+{"level":30,"time":1749750344012,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","msg":"Imagen subida a Cloudinary para DNI 44638380, Fila 3: https://res.cloudinary.com/dxzy5ahim/image/upload/v1749750343/students/student_44638380.png"}
+{"level":30,"time":1749750344017,"pid":49691,"hostname":"Ignacios-MacBook-Air.local","importedCount":2,"errors":[],"msg":"Importación de estudiantes procesada"}
+{"level":30,"time":1749750636365,"pid":51551,"hostname":"Ignacios-MacBook-Air.local","msg":"Fecha parseada: 2003-02-07 como yyyy-MM-dd -> 2003-02-07"}
+{"level":30,"time":1749750636392,"pid":51551,"hostname":"Ignacios-MacBook-Air.local","studentId":"684b124880adcd6c7f8540e8","msg":"Estudiante actualizado con éxito"}
