@@ -160,6 +160,7 @@
 }
 
 .filter-label {
+    font-size: 20px;
     font-weight: 500;
     color: #333;
 }
@@ -196,7 +197,7 @@
     position: relative;
     padding-left: 25px;
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 18px;
     color: #333;
     user-select: none;
 }

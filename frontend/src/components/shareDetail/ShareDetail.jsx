@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
   FaSearch, FaBars, FaTimes, FaList, FaUsers, FaMoneyBill, FaChartBar, FaExchangeAlt,
   FaCalendarCheck, FaUserCog, FaCog, FaEnvelope, FaClipboardList, FaHome, FaArrowLeft, FaUserCircle,
-  FaChevronDown, FaEdit, FaTrash, FaMoneyBillWave, FaPlus, FaSpinner
+  FaChevronDown, FaEdit, FaTrash, FaMoneyBillWave, FaPlus
 } from "react-icons/fa";
 import { StudentsContext } from "../../context/student/StudentContext";
 import { SharesContext } from "../../context/share/ShareContext";
@@ -11,6 +11,7 @@ import { LoginContext } from "../../context/login/LoginContext";
 import SendVoucherEmail from "../voucherEmail/SendVoucherEmail";
 import ShareFormModal from "../modalShare/ShareFormModal";
 import AppNavbar from "../navbar/AppNavbar";
+import AlertCustom from "../alert/AlertCustom"; // Ajusta la ruta según tu estructura
 import "./shareDetail.css";
 import logo from '../../assets/logo.png';
 
@@ -29,6 +30,7 @@ const ShareDetail = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("error");
   const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth >= 768);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -37,7 +39,6 @@ const ShareDetail = () => {
   const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   const availableYears = ["2025", "2026", "2027"];
 
-  // Leer el parámetro 'page' de la URL
   const queryParams = new URLSearchParams(location.search);
   const page = queryParams.get('page') || 1;
 
@@ -101,15 +102,20 @@ const ShareDetail = () => {
     try {
       if (isEditing) {
         await updateCuota(cuotaData);
+        setAlertMessage("La cuota ha sido actualizada correctamente.");
       } else {
         await addCuota(cuotaData);
+        setAlertMessage("La cuota ha sido creada correctamente.");
       }
       await obtenerCuotasPorEstudiante(studentId);
       setSelectedCuota(null);
       setIsEditing(false);
       setShowModal(false);
+      setAlertType("success");
+      setShowAlert(true);
     } catch (error) {
       setAlertMessage("Error al guardar la cuota. Intenta de nuevo.");
+      setAlertType("error");
       setShowAlert(true);
       console.error("Error en handleSave:", error);
     }
@@ -129,10 +135,26 @@ const ShareDetail = () => {
 
   const handleDelete = async (id) => {
     try {
-      await deleteCuota(id);
-      await obtenerCuotasPorEstudiante(studentId);
+      const confirmacion = await Swal.fire({
+        title: "¿Estás seguro que deseas eliminar la cuota?",
+        text: "Esta acción no se puede deshacer",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+      });
+      if (confirmacion.isConfirmed) {
+        await deleteCuota(id);
+        await obtenerCuotasPorEstudiante(studentId);
+        setAlertMessage("La cuota ha sido eliminada correctamente.");
+        setAlertType("success");
+        setShowAlert(true);
+      }
     } catch (error) {
       setAlertMessage("Error al eliminar la cuota. Intenta de nuevo.");
+      setAlertType("error");
       setShowAlert(true);
       console.error("Error en handleDelete:", error);
     }
@@ -176,6 +198,10 @@ const ShareDetail = () => {
   };
 
   const handleBack = () => navigate(`/share?page=${page}`);
+
+  const handleAlertClose = () => {
+    setShowAlert(false);
+  };
 
   return (
     <div className="app-container">
@@ -271,6 +297,9 @@ const ShareDetail = () => {
                   <h1>Cuotas de {selectedStudent.name} {selectedStudent.lastName}</h1>
                 </div>
               </section>
+              {showAlert && (
+                <AlertCustom message={alertMessage} type={alertType} onClose={handleAlertClose} />
+              )}
               <section className="cuotas-filter">
                 <div className="filter-actions">
                   <div className="checkbox-filters">

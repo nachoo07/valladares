@@ -173,6 +173,49 @@
   align-items: center;
 }
 
+.studentFormModal-buttons-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.studentFormModal-cancel-btn {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.studentFormModal-cancel-btn:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.studentFormModal-save-btn {
+  background-color: #28a745;
+  border-color: #28a745;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.studentFormModal-save-btn:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.studentFormModal-save-btn:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.custom-alert {
+  margin-bottom: 15px;
+}
+
+
 /* Responsive */
 @media (max-width: 1200px) {
   .studentFormModal-container.modal-dialog {

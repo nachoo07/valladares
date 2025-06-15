@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import AlertCustom from "../alert/AlertCustom"; // Ajusta la ruta
 import "./shareFormModal.css";
 
 const ShareFormModal = ({
@@ -18,8 +19,9 @@ const ShareFormModal = ({
   const [paymentMethod, setPaymentMethod] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertType, setAlertType] = useState("error"); // Añadir estado para el tipo de alerta
 
-  // Cargar datos del formulario cuando se edita una cuota
   useEffect(() => {
     if (show && selectedCuota && selectedCuota._id) {
       setAmount(selectedCuota.amount?.toString() || "");
@@ -40,18 +42,55 @@ const ShareFormModal = ({
     setPaymentMethod("");
     setSelectedMonth("");
     setAlertMessage("");
+    setShowAlert(false);
+    setAlertType("error");
   };
 
-  const handleSave = () => {
-    if (!date || !amount || selectedMonth === "") {
-      setAlertMessage("Por favor completa todos los campos.");
-      return;
+  const validateForm = () => {
+    const minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 1)).toISOString().split("T")[0];
+    const maxAmount = 1000000;
+
+
+
+    if (selectedMonth === "") {
+      setAlertMessage("Debes seleccionar un mes.");
+      setShowAlert(true);
+      setAlertType("error");
+      return false;
+    }
+
+        if (!amount || isNaN(amount) || parseFloat(amount) <= 0 || parseFloat(amount) > maxAmount) {
+      setAlertMessage(`El monto debe ser un número positivo menor o igual a ${maxAmount}.`);
+      setShowAlert(true);
+      setAlertType("error");
+      return false;
+    }
+       if (!date || new Date(date) > new Date(today) || new Date(date) < new Date(minDate)) {
+      setAlertMessage(`La fecha de pago debe estar entre ${minDate} y ${today}.`);
+      setShowAlert(true);
+      setAlertType("error");
+      return false;
+    }
+
+    if (!paymentMethod || paymentMethod === "") {
+      setAlertMessage("Debes seleccionar un método de pago.");
+      setShowAlert(true);
+      setAlertType("error");
+      return false;
     }
 
     if (selectedStudent?.state === "Inactivo") {
       setAlertMessage("No se puede crear ni actualizar cuotas para un estudiante inactivo.");
-      return;
+      setShowAlert(true);
+      setAlertType("error");
+      return false;
     }
+
+    return true;
+  };
+
+  const handleSave = () => {
+    if (!validateForm()) return;
 
     const cuotaDate = new Date(new Date().getFullYear(), parseInt(selectedMonth), 1);
 
@@ -68,8 +107,17 @@ const ShareFormModal = ({
     }
 
     onSave(cuotaData);
-    resetForm();
-    onHide();
+    
+    // Mostrar mensaje de éxito
+    setAlertMessage("La cuota ha sido actualizada correctamente.");
+    setAlertType("success");
+    setShowAlert(true);
+    
+    // Esperar brevemente para que se vea el mensaje antes de cerrar
+    setTimeout(() => {
+      resetForm();
+      onHide();
+    }, 1500);
   };
 
   const handleCancel = () => {
@@ -77,16 +125,21 @@ const ShareFormModal = ({
     onHide();
   };
 
+  const handleAlertClose = () => {
+    setShowAlert(false);
+  };
   return (
     <Modal show={show} onHide={handleCancel} centered>
       <Modal.Header closeButton className="modal-header-share">
         <Modal.Title>{isEditing ? "Editar Cuota" : "Crear Cuota"}</Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-body-share">
-        {alertMessage && (
-          <div className="alert alert-warning" role="alert">
-            {alertMessage}
-          </div>
+        {showAlert && (
+            <AlertCustom 
+            message={alertType === "success" ? "ÉXITO\n" + alertMessage : alertMessage} 
+            type={alertType} 
+            onClose={handleAlertClose} 
+          />
         )}
         <Form>
           <Form.Group className="mb-3">
@@ -116,6 +169,8 @@ const ShareFormModal = ({
             <Form.Control
               type="number"
               min="0"
+              max={1000000}
+              step="1000"
               placeholder="Monto"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
@@ -135,6 +190,7 @@ const ShareFormModal = ({
             <Form.Select
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
+              required
             >
               <option value="">Selecciona un método</option>
               <option value="Efectivo">Efectivo</option>

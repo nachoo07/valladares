@@ -195,7 +195,16 @@ export const createStudent = async (req, res) => {
     }
 
     if (!name || !lastName || !dni || !birthDate || !address || !category || !club || !turno) {
-      return res.status(400).json({ error: 'Faltan datos obligatorios' });
+      const missingFields = [];
+      if (!name) missingFields.push('Nombre');
+      if (!lastName) missingFields.push('Apellido');
+      if (!dni) missingFields.push('DNI');
+      if (!birthDate) missingFields.push('Fecha de Nacimiento');
+      if (!address) missingFields.push('Dirección');
+      if (!category) missingFields.push('Categoría');
+      if (!club) missingFields.push('Club');
+      if (!turno) missingFields.push('Turno');
+      return res.status(400).json({ error: `Faltan datos obligatorios: ${missingFields.join(', ')}` });
     }
 
     if (!/^\d{8,10}$/.test(dni)) {

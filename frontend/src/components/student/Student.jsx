@@ -92,25 +92,25 @@ const Student = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
- useEffect(() => {
-  const queryParams = new URLSearchParams(location.search);
-  const page = parseInt(queryParams.get('page')) || 1;
-  setCurrentPage(page);
-  obtenerEstudiantes();
-  
-  const handleResize = () => {
-    const newWidth = window.innerWidth;
-    setWindowWidth(newWidth);
-    if (newWidth <= 576) {
-      setIsMenuOpen(false);
-    } else {
-      setIsMenuOpen(true);
-    }
-  };
-  handleResize();
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, [obtenerEstudiantes, location.search]);
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const page = parseInt(queryParams.get('page')) || 1;
+    setCurrentPage(page);
+    obtenerEstudiantes();
+
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      setWindowWidth(newWidth);
+      if (newWidth <= 576) {
+        setIsMenuOpen(false);
+      } else {
+        setIsMenuOpen(true);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [obtenerEstudiantes, location.search]);
 
   useEffect(() => {
     if (location.pathname !== "/student" && location.state?.fromStudent) {
@@ -149,7 +149,6 @@ const Student = () => {
     setIsImporting(true);
 
     try {
-      console.log('Archivo seleccionado:', file.name);
       const reader = new FileReader();
 
       reader.onload = async (event) => {
@@ -178,7 +177,6 @@ const Student = () => {
             }
 
             const profileImage = row['Imagen de Perfil'] || '';
-            console.log(`Fila ${index + 2}, Estudiante ${row.Nombre} ${row.Apellido}: profileImage = ${profileImage}`);
 
             return {
               name: row.Nombre || '',
@@ -214,8 +212,6 @@ const Student = () => {
           if (studentList.length === 0) {
             throw new Error('El archivo Excel no contiene datos válidos');
           }
-
-          console.log('Lista de estudiantes enviada:', studentList);
           await importStudents(studentList);
         } catch (error) {
           console.error('Error al procesar el Excel:', error);
@@ -289,7 +285,6 @@ const Student = () => {
 
   const handleShow = (student = null) => {
     if (student) {
-      console.log('Fecha de nacimiento recibida:', student.birthDate, typeof student.birthDate);
       setEditStudent(student);
       const dateInputValue = student.birthDate || ''; // Mantener yyyy-MM-dd
       setFormData({
@@ -368,33 +363,69 @@ const Student = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.dni) {
-      setAlertMessage('El DNI es obligatorio');
-      setShowAlert(true);
-      return;
-    }
-    if (!formData.dateInputValue) {
-      setAlertMessage('La fecha de nacimiento es obligatoria');
-      setShowAlert(true);
-      return;
+
+    // Validar formato de imagen en el frontend
+    if (formData.profileImage instanceof File) {
+      const validImageTypes = [
+        'image/jpeg',
+        'image/png',
+        'image/heic',
+        'image/heif',
+        'image/webp',
+        'image/gif',
+      ];
+      if (!validImageTypes.includes(formData.profileImage.type)) {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'La imagen de perfil debe ser un archivo JPEG, PNG, HEIC, WEBP o GIF.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+        return;
+      }
+      if (formData.profileImage.size > 5 * 1024 * 1024) { // 5MB
+        Swal.fire({
+          title: '¡Error!',
+          text: 'La imagen de perfil no debe exceder los 5MB.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+        return;
+      }
     }
 
     const formattedData = {
       ...formData,
-      birthDate: formData.dateInputValue, // Usar directamente el valor del input
+      birthDate: formData.dateInputValue,
     };
 
     try {
       if (editStudent) {
         await updateEstudiante(formattedData);
-        Swal.fire('¡Éxito!', 'El perfil ha sido actualizado.', 'success');
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'El perfil del estudiante ha sido actualizado correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+        });
       } else {
         await addEstudiante(formattedData);
-        Swal.fire('¡Éxito!', 'El alumno ha sido agregado.', 'success');
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'El estudiante ha sido agregado correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+        });
       }
       setShow(false);
     } catch (error) {
-      Swal.fire('Error', 'Ha habido un problema al guardar el alumno.', 'error');
+      console.error('Error en handleSubmit:', error);
+      Swal.fire({
+        title: '¡Error!',
+        text: error.message || 'Ocurrió un problema al guardar el estudiante. Por favor, intenta de nuevo.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
     }
   };
 
@@ -423,8 +454,8 @@ const Student = () => {
   };
 
   const handleViewDetail = (studentId) => {
-  navigate(`/detailstudent/${studentId}?page=${currentPage}`);
-};
+    navigate(`/detailstudent/${studentId}?page=${currentPage}`);
+  };
 
   return (
     <div className={`app-container ${windowWidth <= 576 ? "mobile-view" : ""}`}>
@@ -592,20 +623,20 @@ const Student = () => {
                 </label>
               </div>
               <div className="btn-student">
-              <button className="add-btn" onClick={() => handleShow()}>
-                <FaPlus /> Agregar estudiante
-              </button>
-              <label htmlFor="import-excel" className="import-btn">
-                <FaFileExcel style={{ marginRight: "10px" }} /> Importar Excel
-              </label>
-              <input
-                type="file"
-                id="import-excel"
-                accept=".xlsx, .xls"
-                style={{ display: "none" }}
-                onChange={handleImportExcel}
-                disabled={isImporting}
-              />
+                <button className="add-btn" onClick={() => handleShow()}>
+                  <FaPlus /> Agregar estudiante
+                </button>
+                <label htmlFor="import-excel" className="import-btn">
+                  <FaFileExcel style={{ marginRight: "10px" }} /> Importar Excel
+                </label>
+                <input
+                  type="file"
+                  id="import-excel"
+                  accept=".xlsx, .xls"
+                  style={{ display: "none" }}
+                  onChange={handleImportExcel}
+                  disabled={isImporting}
+                />
               </div>
             </div>
           </section>

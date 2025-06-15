@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form, Alert } from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Modal, Button, Form, Alert, Spinner } from 'react-bootstrap';
+import { StudentsContext } from '../../context/student/StudentContext';
 import './studentModal.css';
 
 const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formData }) => {
-  const [uploading, setUploading] = useState(false);
+  const { loading } = useContext(StudentsContext);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
 
@@ -27,9 +28,9 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
   const handleCheckboxChange = (name, value) => (e) => {
     const isChecked = e.target.checked;
     let newValue;
-    
+
     if (isChecked) {
-      newValue = value; 
+      newValue = value;
       if (name === 'isAllergic' && value === false) {
         handleChange({ target: { name: 'allergyDetails', value: '' } });
       }
@@ -45,7 +46,7 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
         handleChange({ target: { name: 'medicationDetails', value: '' } });
       }
     }
-    
+
     handleChange({ target: { name, value: newValue } });
   };
 
@@ -171,18 +172,18 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
               className="form-control-custom"
             />
           </Form.Group>
-   <Form.Group controlId="formBirthDate" className="studentFormModal-form-group">
-  <Form.Label>Fecha de Nacimiento</Form.Label>
-  <Form.Control
-    type="date"
-    name="dateInputValue"
-    value={formData.dateInputValue || ''}
-    onChange={handleChange}
-    max={today}
-    required
-    className="form-control-custom"
-  />
-</Form.Group>
+          <Form.Group controlId="formBirthDate" className="studentFormModal-form-group">
+            <Form.Label>Fecha de Nacimiento</Form.Label>
+            <Form.Control
+              type="date"
+              name="dateInputValue"
+              value={formData.dateInputValue || ''}
+              onChange={handleChange}
+              max={today}
+              required
+              className="form-control-custom"
+            />
+          </Form.Group>
           <Form.Group controlId="formDireccion" className="studentFormModal-form-group">
             <Form.Label>Dirección</Form.Label>
             <Form.Control
@@ -244,6 +245,7 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
               name="turno"
               value={formData.turno || ''}
               onChange={handleChange}
+              required
               className="form-control-custom"
             >
               <option value="">Ninguno</option>
@@ -306,10 +308,9 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
                 type="file"
                 name="profileImage"
                 onChange={handleFileChange}
-                disabled={uploading}
+                disabled={loading}
                 className="form-control-custom"
               />
-              {uploading && <p className="uploading">Subiendo imagen...</p>}
             </div>
             {formData.profileImage && (
               <div className="studentFormModal-image-preview-container">
@@ -391,8 +392,15 @@ const StudentFormModal = ({ show, handleClose, handleSubmit, handleChange, formD
             <Button type="button" className="studentFormModal-cancel-btn" onClick={handleClose}>
               Cancelar
             </Button>
-            <Button type="submit" className="studentFormModal-save-btn" disabled={uploading}>
-              {uploading ? 'Guardando...' : (formData._id ? 'Actualizar' : 'Guardar')}
+            <Button type="submit" className="studentFormModal-save-btn" disabled={loading}>
+              {loading ? (
+                <>
+                  <Spinner animation="border" size="sm" className="me-2" />
+                  Guardando...
+                </>
+              ) : (
+                formData._id ? 'Actualizar' : 'Guardar'
+              )}
             </Button>
           </div>
         </Form>

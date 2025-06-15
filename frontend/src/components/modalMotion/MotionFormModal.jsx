@@ -164,10 +164,10 @@ const MotionFormModal = ({
         </Form>
       </Modal.Body>
       <Modal.Footer className="modal-footer-motion">
-        <Button  onClick={handleCancel}>
+        <Button className="btn-modal-cancelar" onClick={handleCancel}>
           Cancelar
         </Button>
-        <Button  onClick={handleSave}>
+        <Button className="btn-modal-guardar" onClick={handleSave}>
           Guardar
         </Button>
       </Modal.Footer>
