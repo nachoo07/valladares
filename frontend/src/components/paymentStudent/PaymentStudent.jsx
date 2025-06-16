@@ -1,29 +1,25 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   FaBars,
   FaList,
   FaTimes,
   FaUsers,
-  FaBell,
   FaMoneyBill,
   FaChartBar,
   FaExchangeAlt,
-  FaCalendarCheck,
   FaUserCog,
   FaCog,
   FaEnvelope,
   FaHome,
-  FaArrowLeft,
   FaEdit,
   FaTrash,
   FaPlus,
   FaSearch,
-  FaSun,
   FaClipboardList,
-  FaMoon,
   FaUserCircle,
   FaChevronDown,
+  FaArrowLeft,
   FaTimes as FaTimesClear,
 } from "react-icons/fa";
 import { StudentsContext } from "../../context/student/StudentContext";
@@ -37,8 +33,8 @@ import logo from '../../assets/logo.png';
 
 const PaymentStudent = () => {
   const { estudiantes } = useContext(StudentsContext);
-  const { payments, loadingPayments, fetchPaymentsByStudent, createPayment, deletePayment, updatePayment, concepts, loadingConcepts, fetchConcepts, createConcept, deleteConcept } = useContext(PaymentContext);
-  const { auth, logout, userData } = useContext(LoginContext);
+  const { payments, loadingPayments, fetchPaymentsByStudent, createPayment, deletePaymentConcept, updatePaymentConcept, concepts, loadingConcepts, fetchConcepts, createConcept } = useContext(PaymentContext);
+  const { logout, userData } = useContext(LoginContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [student, setStudent] = useState(null);
@@ -58,7 +54,6 @@ const PaymentStudent = () => {
   const [showModal, setShowModal] = useState(false);
   const [showConceptModal, setShowConceptModal] = useState(false);
   const [newConcept, setNewConcept] = useState("");
-  const hasFetched = useRef(false);
 
   const menuItems = [
     { name: "Inicio", route: "/", icon: <FaHome />, category: "principal" },
@@ -66,7 +61,6 @@ const PaymentStudent = () => {
     { name: "Cuotas", route: "/share", icon: <FaMoneyBill />, category: "finanzas" },
     { name: "Reportes", route: "/report", icon: <FaChartBar />, category: "informes" },
     { name: "Movimientos", route: "/motion", icon: <FaExchangeAlt />, category: "finanzas" },
-    { name: "Asistencia", route: "/attendance", icon: <FaCalendarCheck />, category: "principal" },
     { name: "Usuarios", route: "/user", icon: <FaUserCog />, category: "configuracion" },
     { name: "Ajustes", route: "/settings", icon: <FaCog />, category: "configuracion" },
     { name: "Envios de Mail", route: "/email-notifications", icon: <FaEnvelope />, category: "comunicacion" },
@@ -80,14 +74,8 @@ const PaymentStudent = () => {
   }, [id, estudiantes]);
 
   useEffect(() => {
-    if (!hasFetched.current) {
-      hasFetched.current = true;
-      fetchPaymentsByStudent(id);
-      fetchConcepts();
-    }
-    return () => {
-      hasFetched.current = false;
-    };
+    fetchPaymentsByStudent(id);
+    fetchConcepts();
   }, [id, fetchPaymentsByStudent, fetchConcepts]);
 
   useEffect(() => {
@@ -168,7 +156,7 @@ const PaymentStudent = () => {
         paymentDate: new Date(formData.paymentDate).toISOString().split("T")[0],
       };
       if (editMode) {
-        await updatePayment(editPaymentId, paymentData);
+        await updatePaymentConcept(editPaymentId, paymentData);
         Swal.fire("¡Éxito!", "El pago ha sido actualizado correctamente.", "success");
         setEditMode(false);
         setEditPaymentId(null);
@@ -240,7 +228,7 @@ const PaymentStudent = () => {
     });
     if (result.isConfirmed) {
       try {
-        await deletePayment(paymentId, id);
+        await deletePaymentConcept(paymentId, id);
         Swal.fire("¡Éxito!", "El pago ha sido eliminado correctamente.", "success");
       } catch (error) {
         Swal.fire("¡Error!", error.response?.data?.message || "No se pudo eliminar el pago.", "error");
@@ -248,23 +236,20 @@ const PaymentStudent = () => {
     }
   };
 
-const formatDate = (dateString) => {
-  if (!dateString) return "-";
-  
-  try {
-    // Formato ISO con el que trabajamos
-    const isoDate = new Date(dateString).toISOString();
-    const [fullDate] = isoDate.split('T');
-    const [year, month, day] = fullDate.split('-');
-    
-    return `${day}-${month}-${year}`;
-  } catch (error) {
-    console.error("Error al formatear fecha:", error);
-    return dateString; // Devolver el original si hay un error
-  }
-};
-  const totalPaid = payments.reduce((sum, payment) => sum + payment.amount, 0);
+  const formatDate = (dateString) => {
+    if (!dateString) return "-";
+    try {
+      const isoDate = new Date(dateString).toISOString();
+      const [fullDate] = isoDate.split('T');
+      const [year, month, day] = fullDate.split('-');
+      return `${day}-${month}-${year}`;
+    } catch (error) {
+      console.error("Error al formatear fecha:", error);
+      return dateString;
+    }
+  };
 
+  const totalPaid = payments.reduce((sum, payment) => sum + payment.amount, 0);
   const today = new Date().toISOString().split("T")[0];
 
   if (!student) {
@@ -278,10 +263,9 @@ const formatDate = (dateString) => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          <div className="nav-left-section"></div>
-           <div className="header-logo-setting" onClick={() => navigate('/')}>
-                      <img src={logo} alt="Valladares Fútbol" className="logo-image" />
-                    </div>
+          <div className="header-logo-setting" onClick={() => navigate('/')}>
+            <img src={logo} alt="Valladares Fútbol" className="logo-image" />
+          </div>
           <div className="nav-right-section">
             <div className="profile-container" onClick={() => setIsProfileOpen(!isProfileOpen)}>
               <FaUserCircle className="profile-icon" />
@@ -366,9 +350,14 @@ const formatDate = (dateString) => {
                       className="search-input"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
+                      disabled={loadingPayments || loadingConcepts}
                     />
                     {searchQuery && (
-                      <button className="search-clear" onClick={() => setSearchQuery("")}>
+                      <button 
+                        className="search-clear" 
+                        onClick={() => setSearchQuery("")}
+                        disabled={loadingPayments || loadingConcepts}
+                      >
                         <FaTimesClear />
                       </button>
                     )}
@@ -377,24 +366,24 @@ const formatDate = (dateString) => {
               )}
               <section className="payment-table-container">
                 <h2 className="section-title">Historial de Pagos</h2>
-                {loadingPayments ? (
-                  <p>Cargando...</p>
-                ) : payments.length === 0 ? (
-                  <p className="no-data">No hay pagos registrados.</p>
-                ) : (
-                  <table className="payment-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Concepto</th>
-                        <th>Monto</th>
-                        <th>Fecha</th>
-                        <th>Método</th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {payments
+                <table className="payment-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Concepto</th>
+                      <th>Monto</th>
+                      <th>Fecha</th>
+                      <th>Método</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {payments.length === 0 ? (
+                      <div className="no-data-payment">
+                          {loadingPayments ? "Cargando pagos..." : "No hay pagos registrados."}
+                      </div>
+                    ) : (
+                      payments
                         .filter((payment) => payment.concept.toLowerCase().includes(searchQuery.toLowerCase()))
                         .map((payment, index) => (
                           <tr key={payment._id}>
@@ -409,6 +398,7 @@ const formatDate = (dateString) => {
                                   className="action-btn-student"
                                   onClick={() => handleEdit(payment)}
                                   aria-label="Editar pago"
+                                  disabled={loadingPayments || loadingConcepts}
                                 >
                                   <FaEdit />
                                 </button>
@@ -416,6 +406,7 @@ const formatDate = (dateString) => {
                                   className="action-btn-student"
                                   onClick={() => handleDelete(payment._id)}
                                   aria-label="Eliminar pago"
+                                  disabled={loadingPayments || loadingConcepts}
                                 >
                                   <FaTrash />
                                 </button>
@@ -424,14 +415,15 @@ const formatDate = (dateString) => {
                                   payment={payment}
                                   onSendingStart={() => {}}
                                   onSendingEnd={() => {}}
+                                  disabled={loadingPayments || loadingConcepts}
                                 />
                               </div>
                             </td>
                           </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                )}
+                        ))
+                    )}
+                  </tbody>
+                </table>
               </section>
             </div>
             <div className="sidebar-column">
@@ -441,15 +433,27 @@ const formatDate = (dateString) => {
                     <h2 className="panel-title">Acciones Rápidas</h2>
                   </div>
                   <div className="quick-actions-grid">
-                    <button className="quick-action-btn" onClick={handleOpenModal}>
+                    <button 
+                      className="quick-action-btn" 
+                      onClick={handleOpenModal}
+                      disabled={loadingPayments || loadingConcepts}
+                    >
                       <FaPlus className="btn-icon" />
                       <span>Añadir Pago</span>
                     </button>
-                    <button className="quick-action-btn" onClick={handleOpenConceptModal}>
+                    <button 
+                      className="quick-action-btn" 
+                      onClick={handleOpenConceptModal}
+                      disabled={loadingPayments || loadingConcepts}
+                    >
                       <FaPlus className="btn-icon" />
                       <span>Crear Concepto</span>
                     </button>
-                    <button className="quick-action-btn" onClick={() => navigate(-1)}>
+                    <button 
+                      className="quick-action-btn" 
+                      onClick={() => navigate(-1)}
+                      disabled={loadingPayments || loadingConcepts}
+                    >
                       <FaArrowLeft className="btn-icon" />
                       <span>Volver Atrás</span>
                     </button>
@@ -490,7 +494,13 @@ const formatDate = (dateString) => {
               <form onSubmit={handleSubmit} className="payment-form">
                 <div className="form-row full-width">
                   <label>Concepto</label>
-                  <select name="concept" value={formData.concept} onChange={handleChange} required>
+                  <select 
+                    name="concept" 
+                    value={formData.concept} 
+                    onChange={handleChange} 
+                    required
+                    disabled={loadingPayments || loadingConcepts}
+                  >
                     <option value="">Seleccionar concepto</option>
                     {concepts.map((concept) => (
                       <option key={concept._id} value={concept.name}>
@@ -517,6 +527,7 @@ const formatDate = (dateString) => {
                     min="0"
                     step="0.01"
                     placeholder="Ingrese el monto"
+                    disabled={loadingPayments || loadingConcepts}
                   />
                 </div>
                 <div className="form-row">
@@ -528,11 +539,18 @@ const formatDate = (dateString) => {
                     onChange={handleChange}
                     required
                     max={today}
+                    disabled={loadingPayments || loadingConcepts}
                   />
                 </div>
                 <div className="form-row">
                   <label>Método de Pago</label>
-                  <select name="paymentMethod" value={formData.paymentMethod} onChange={handleChange} required>
+                  <select 
+                    name="paymentMethod" 
+                    value={formData.paymentMethod} 
+                    onChange={handleChange} 
+                    required
+                    disabled={loadingPayments || loadingConcepts}
+                  >
                     <option value="">Seleccionar método</option>
                     <option value="Efectivo">Efectivo</option>
                     <option value="Transferencia">Transferencia</option>
@@ -542,7 +560,11 @@ const formatDate = (dateString) => {
                   <button type="button" className="btn-cancel" onClick={handleCloseModal}>
                     Cancelar
                   </button>
-                  <button type="submit" className="btn-submit">
+                  <button 
+                    type="submit" 
+                    className="btn-submit"
+                    disabled={loadingPayments || loadingConcepts}
+                  >
                     {editMode ? "Actualizar Pago" : "Guardar Pago"}
                   </button>
                 </div>
@@ -576,22 +598,27 @@ const formatDate = (dateString) => {
                     required
                     placeholder="Ej: Liga de Sierra Buena"
                     maxLength="50"
+                    disabled={loadingPayments || loadingConcepts}
                   />
                 </div>
                 <div className="modal-actions">
-                  <button type="submit" className="btn-submit">
+                  <button 
+                    type="submit" 
+                    className="btn-submit"
+                    disabled={loadingPayments || loadingConcepts}
+                  >
                     Guardar Concepto
                   </button>
                 </div>
               </form>
               <h3 className="titulo-concepto">Conceptos Existentes</h3>
-              {loadingConcepts ? (
-                <p>Cargando conceptos...</p>
-              ) : concepts.length === 0 ? (
-                <p className="no-data">No hay conceptos registrados.</p>
-              ) : (
-                <div className="concept-list">
-                  {concepts.map((concept) => (
+              <div className="concept-list">
+                {concepts.length === 0 ? (
+                  <p className="no-data">
+                    {loadingConcepts ? "Cargando conceptos..." : "No hay conceptos registrados."}
+                  </p>
+                ) : (
+                  concepts.map((concept) => (
                     <div key={concept._id} className="concept-item">
                       <span className="concept-name">
                         {concept.name.charAt(0).toUpperCase() + concept.name.slice(1)}
@@ -600,13 +627,14 @@ const formatDate = (dateString) => {
                         className="concept-delete-btn"
                         onClick={() => handleDeleteConcept(concept._id, concept.name.charAt(0).toUpperCase() + concept.name.slice(1))}
                         aria-label={`Eliminar concepto ${concept.name}`}
+                        disabled={loadingPayments || loadingConcepts}
                       >
                         <FaTimes />
                       </button>
                     </div>
-                  ))}
-                </div>
-              )}
+                  ))
+                )}
+              </div>
             </div>
             <div className="modal-footer">
               <button className="btn-cancel" onClick={handleCloseConceptModal}>

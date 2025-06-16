@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaBars, FaUsers,FaList, FaTimes, FaChartBar, FaHome, FaMoneyBill, FaExchangeAlt, FaCalendarCheck, FaUserCog, FaCog, FaEnvelope, FaClipboardList, FaArrowLeft, FaUserCircle, FaChevronDown, FaFileExport } from "react-icons/fa";
+import { FaBars, FaUsers, FaList, FaTimes, FaChartBar, FaHome, FaMoneyBill, FaExchangeAlt, FaCalendarCheck, FaUserCog, FaCog, FaEnvelope, FaClipboardList, FaArrowLeft, FaUserCircle, FaChevronDown, FaFileExport } from "react-icons/fa";
 import { PaymentContext } from "../../context/payment/PaymentContext";
 import { MotionContext } from "../../context/motion/MotionContext";
 import { SharesContext } from "../../context/share/ShareContext";
@@ -58,7 +58,6 @@ const EconomicMovements = () => {
             fetchMotions();
             setCuotas([]);
             obtenerCuotasPorFecha(selectedDate).then((newCuotas) => {
-            
             });
         }
     }, [auth, fetchAllPayments, fetchMotions, obtenerCuotasPorFecha, selectedDate, setCuotas, isMounted]);
@@ -148,12 +147,10 @@ const EconomicMovements = () => {
     };
 
     const handleLogout = () => {
-        logout();
         navigate("/login");
         setIsMenuOpen(false);
     };
 
-    if (auth !== "admin") return <div>No tienes permiso para ver esta página.</div>;
     const capitalizeFirstLetter = (string) => {
         if (!string || string === "-") return string;
         return string
@@ -161,6 +158,9 @@ const EconomicMovements = () => {
             .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
             .join(' ');
     };
+
+    const isLoading = loadingPayments || loadingMotions || loadingCuotas;
+
     return (
         <div className={`app-container ${windowWidth <= 576 ? "mobile-view" : ""}`}>
             {windowWidth <= 576 && <AppNavbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />}
@@ -210,26 +210,34 @@ const EconomicMovements = () => {
                 </aside>
                 <main className="main-content">
                     <div className="welcome-text">
-                        <h1>MOVIMIENTOS ECONÓMICOS</h1>
+                        <h1>Movimientos Económicos</h1>
                     </div>
-                    <div className="filter-section">
-                        <input type="date" value={selectedDate} onChange={handleDateChange} max={new Date().toISOString().split("T")[0]} />
-                        <button className="export-btn" onClick={handleExportExcel}>
-                            <FaFileExport /> EXPORTAR A EXCEL
+                    <div className="filter-section-economic">
+                        <input 
+                            type="date" 
+                            value={selectedDate} 
+                            onChange={handleDateChange} 
+                            max={new Date().toISOString().split("T")[0]} 
+                            disabled={isLoading} // Deshabilitar durante carga
+                        />
+                        <button 
+                            className="export-btn" 
+                            onClick={handleExportExcel} 
+                            disabled={isLoading || data.length === 0} // Deshabilitar durante carga o sin datos
+                        >
+                            <FaFileExport /> Exportar a Excel
                         </button>
                     </div>
-                    {(loadingPayments || loadingMotions || loadingCuotas) ? (
-                        <p>CARGANDO...</p>
-                    ) : (
+                    <div className="table-wrapper">
                         <table className="economic-table">
                             <thead>
                                 <tr>
-                                    <th>FECHA</th>
-                                    <th>CONCEPTO</th>
-                                    <th>MONTO</th>
-                                    <th>MÉTODO</th>
-                                    <th>TIPO</th>
-                                    <th>NOMBRE</th>
+                                    <th>Fecha</th>
+                                    <th>Concepto</th>
+                                    <th>Monto</th>
+                                    <th>Método</th>
+                                    <th>Tipo</th>
+                                    <th>Nombre</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -255,19 +263,23 @@ const EconomicMovements = () => {
                                             <td></td>
                                             <td>${data.reduce((sum, m) => sum + (m.amount || 0), 0).toLocaleString("es-ES")}</td>
                                             <td>Efectivo: ${data.reduce((sum, m) =>
-                                                (m.paymentMethod.toLowerCase() === "efectivo") ? sum + (m.amount || 0) : sum, 0).toLocaleString("es-ES")} -
+                                                (m.paymentMethod.toLowerCase() === "efectivo") ? sum + (m.amount || 0) : sum, 0).toLocaleString("es-ES")} - 
                                                 Transferencia: ${data.reduce((sum, m) =>
-                                                    (m.paymentMethod.toLowerCase() === "transferencia") ? sum + (m.amount || 0) : sum, 0).toLocaleString("es-ES")}</td>
+                                                (m.paymentMethod.toLowerCase() === "transferencia") ? sum + (m.amount || 0) : sum, 0).toLocaleString("es-ES")}</td>
                                             <td></td>
                                             <td></td>
                                         </tr>
                                     </>
                                 ) : (
-                                    <tr><td colSpan="6">NO HAY MOVIMIENTOS PARA EL DÍA SELECCIONADO.</td></tr>
+                                    <tr className="empty-table-row">
+                                        <td colSpan="6" className="empty-table-message">
+                                            {isLoading ? "Cargando movimientos..." : "No hay movimientos para el día seleccionado."}
+                                        </td>
+                                    </tr>
                                 )}
                             </tbody>
                         </table>
-                    )}
+                    </div>
                 </main>
             </div>
         </div>

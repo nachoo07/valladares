@@ -357,6 +357,8 @@
     .motion-date-filter {
         flex-direction: column;
         gap: 15px;
+        margin-bottom: 0px;
+        padding: 0px;
     }
 
     .motion-filter-section {
@@ -373,6 +375,7 @@
         gap: 10px;
         flex-wrap: wrap;
         margin: 0px !important;
+        margin-bottom: 10px !important;
     }
 
     .motion-filter-item {
@@ -398,6 +401,8 @@
 
     .motion-save-btn {
         padding: 5px 8px;
+        font-size: 16px;
+        
     }
 
     .motion-actions {
@@ -423,15 +428,23 @@
 
     .motion-table th,
     .motion-table td {
-        font-size: 16px;
+    font-size: 13px;
+    padding: 6px;
     }
 
     .motion-edit-btn,
     .motion-delete-btn {
-        padding: 4px 10px;
+    font-size: 20px !important;
+    padding: 4px !important;
     }
 
     .search-section {
         display: none; /* Ocultar buscador en pantallas móviles */
+    }
+
+    .icon-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
     }
 }

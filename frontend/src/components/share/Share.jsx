@@ -304,9 +304,6 @@ const Share = () => {
             </div>
           </section>
           <section className="cuotas-table-section">
-            {loadingStudents || loadingCuotas ? (
-              <p className="no-data">Cargando datos...</p>
-            ) : (
               <div className="table-wrapper">
                 <table className="cuotas-table">
                   <thead>
@@ -367,7 +364,6 @@ const Share = () => {
                   </tbody>
                 </table>
               </div>
-            )}
             <div className="pagination">
               <button
                 disabled={currentPage === 1}

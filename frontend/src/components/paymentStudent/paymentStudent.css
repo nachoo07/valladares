@@ -145,10 +145,12 @@ body {
 }
 
 
-.no-data {
-  text-align: center;
+.no-data-payment {
+  text-align: center !important;
   color: var(--text-light);
   padding: 20px;
+  
+  margin: 0px;
 }
 .quick-actions, .payment-summary {
   background-color: var(--card-bg);

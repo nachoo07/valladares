@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const AppNavbar = ({ setIsMenuOpen, isMenuOpen }) => {
-  const { logout, userData } = useContext(LoginContext);
+  const { logout, userData, auth } = useContext(LoginContext);
   const navigate = useNavigate();
   const [isProfileOpen, setIsProfileOpen] = React.useState(false);
   const profileRef = useRef(null);
@@ -24,19 +24,28 @@ const AppNavbar = ({ setIsMenuOpen, isMenuOpen }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+ // Definir los elementos del menú con una propiedad "adminOnly"
   const menuItems = [
-    { name: 'Inicio', route: '/', icon: <FaHome />, category: 'principal' },
-    { name: 'Alumnos', route: '/student', icon: <FaUsers />, category: 'principal' },
-    { name: 'Cuotas', route: '/share', icon: <FaMoneyBill />, category: 'finanzas' },
-    { name: 'Reportes', route: '/report', icon: <FaChartBar />, category: 'informes' },
-    { name: 'Movimientos', route: '/motion', icon: <FaExchangeAlt />, category: 'finanzas' },
-    { name: 'Asistencia', route: '/attendance', icon: <FaCalendarCheck />, category: 'principal' },
-    { name: 'Usuarios', route: '/user', icon: <FaUserCog />, category: 'configuracion' },
-    { name: 'Ajustes', route: '/settings', icon: <FaCog />, category: 'configuracion' },
-    { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList  />, category: 'informes' },
-    { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion' },
-    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas' }
+    { name: 'Inicio', route: '/', icon: <FaHome />, category: 'principal', adminOnly: false },
+    { name: 'Alumnos', route: '/student', icon: <FaUsers />, category: 'principal', adminOnly: true },
+    { name: 'Cuotas', route: '/share', icon: <FaMoneyBill />, category: 'finanzas', adminOnly: true },
+    { name: 'Reportes', route: '/report', icon: <FaChartBar />, category: 'informes', adminOnly: true },
+    { name: 'Movimientos', route: '/motion', icon: <FaExchangeAlt />, category: 'finanzas', adminOnly: true },
+    { name: 'Asistencia', route: '/attendance', icon: <FaCalendarCheck />, category: 'principal', adminOnly: false },
+    { name: 'Usuarios', route: '/user', icon: <FaUserCog />, category: 'configuracion', adminOnly: true },
+    { name: 'Ajustes', route: '/settings', icon: <FaCog />, category: 'configuracion', adminOnly: true },
+    { name: 'Listado de Alumnos', route: '/liststudent', icon: <FaClipboardList />, category: 'informes', adminOnly: true },
+    { name: 'Envios de Mail', route: '/email-notifications', icon: <FaEnvelope />, category: 'comunicacion', adminOnly: true },
+    { name: 'Lista de Movimientos', route: '/listeconomic', icon: <FaList />, category: 'finanzas', adminOnly: true }
   ];
+
+    // Filtra los elementos del menú según el rol del usuario
+  const filteredMenuItems = menuItems.filter(item => {
+    // Si el usuario es admin, muestra todos los elementos
+    if (auth === 'admin') return true;
+    // Si el usuario no es admin, solo muestra los elementos que no son exclusivos para admin
+    return !item.adminOnly;
+  });
 
   const handleMenuItemClick = (route) => {
     navigate(route);
@@ -125,7 +134,7 @@ const AppNavbar = ({ setIsMenuOpen, isMenuOpen }) => {
         </div>
         <Navbar.Collapse id="basic-navbar-nav" className="bg-dark text-white">
           <Nav className="flex-column">
-            {menuItems.map((item, index) => (
+              {filteredMenuItems.map((item, index) => (
               <Nav.Link
                 key={index}
                 onClick={() => handleMenuItemClick(item.route)}

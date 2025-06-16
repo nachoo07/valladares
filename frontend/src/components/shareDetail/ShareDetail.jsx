@@ -11,7 +11,8 @@ import { LoginContext } from "../../context/login/LoginContext";
 import SendVoucherEmail from "../voucherEmail/SendVoucherEmail";
 import ShareFormModal from "../modalShare/ShareFormModal";
 import AppNavbar from "../navbar/AppNavbar";
-import AlertCustom from "../alert/AlertCustom"; // Ajusta la ruta según tu estructura
+import AlertCustom from "../alert/AlertCustom";
+import Swal from 'sweetalert2';
 import "./shareDetail.css";
 import logo from '../../assets/logo.png';
 
@@ -36,6 +37,7 @@ const ShareDetail = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [sendingCuotaId, setSendingCuotaId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   const availableYears = ["2025", "2026", "2027"];
 
@@ -65,6 +67,10 @@ const ShareDetail = () => {
       obtenerCuotasPorEstudiante(studentId);
     }
   }, [studentId, obtenerEstudiantePorId, obtenerCuotasPorEstudiante]);
+
+  useEffect(() => {
+    setIsLoading(loadingStudent || loadingCuotas || !selectedStudent);
+  }, [loadingStudent, loadingCuotas, selectedStudent]);
 
   useEffect(() => {
     filterData();
@@ -134,6 +140,13 @@ const ShareDetail = () => {
   };
 
   const handleDelete = async (id) => {
+    if (!id) {
+      setAlertMessage("ID de cuota inválido.");
+      setAlertType("error");
+      setShowAlert(true);
+      console.error("ID de cuota no proporcionado");
+      return;
+    }
     try {
       const confirmacion = await Swal.fire({
         title: "¿Estás seguro que deseas eliminar la cuota?",
@@ -146,17 +159,44 @@ const ShareDetail = () => {
         cancelButtonText: "Cancelar",
       });
       if (confirmacion.isConfirmed) {
-        await deleteCuota(id);
-        await obtenerCuotasPorEstudiante(studentId);
+        try {
+          await deleteCuota(id);
+        } catch (deleteError) {
+          console.error("Error al eliminar cuota:", {
+            cuotaId: id,
+            message: deleteError.message,
+            response: deleteError.response?.data,
+            status: deleteError.response?.status,
+          });
+          let errorMessage = "Error al eliminar la cuota. Intenta de nuevo.";
+          if (deleteError.response?.status === 404) {
+            errorMessage = "Cuota no encontrada.";
+          } else if (deleteError.response?.status === 401) {
+            errorMessage = "Sesión expirada. Por favor, inicia sesión nuevamente.";
+          } else if (deleteError.response?.data?.message) {
+            errorMessage = deleteError.response.data.message;
+          }
+          throw new Error(errorMessage);
+        }
+        try {
+          await obtenerCuotasPorEstudiante(studentId);
+        } catch (fetchError) {
+          console.error("Error al recargar cuotas:", {
+            studentId,
+            message: fetchError.message,
+            response: fetchError.response?.data,
+            status: fetchError.response?.status,
+          });
+          throw new Error("Error al recargar las cuotas.");
+        }
         setAlertMessage("La cuota ha sido eliminada correctamente.");
         setAlertType("success");
         setShowAlert(true);
       }
     } catch (error) {
-      setAlertMessage("Error al eliminar la cuota. Intenta de nuevo.");
+      setAlertMessage(error.message || "Error al eliminar la cuota. Intenta de nuevo.");
       setAlertType("error");
       setShowAlert(true);
-      console.error("Error en handleDelete:", error);
     }
   };
 
@@ -288,8 +328,10 @@ const ShareDetail = () => {
           </nav>
         </aside>
         <div className="content-container">
-          {loadingStudent || !selectedStudent ? (
-            <p className="no-data">Cargando datos del estudiante...</p>
+          {isLoading ? (
+            <div className="loading-message">
+              Cargando datos...
+            </div>
           ) : (
             <>
               <section className="dashboard-welcome">
@@ -310,89 +352,89 @@ const ShareDetail = () => {
                           name={year}
                           checked={selectedYear === year}
                           onChange={handleFilterChange}
+                          disabled={isLoading}
                         />
                         <span className="checkbox-custom-share">{year}</span>
                       </label>
                     ))}
                   </div>
                   <div className="action-buttons">
-                    <button className="add-btn" onClick={handleCreateClick}>
+                    <button className="add-btn" onClick={handleCreateClick} disabled={isLoading}>
                       <FaPlus /> Crear Cuota
                     </button>
-                    <button className="back-btn" onClick={handleBack}>
+                    <button className="back-btn" onClick={handleBack} disabled={isLoading}>
                       Volver
                     </button>
                   </div>
                 </div>
               </section>
               <section className="cuotas-table-section">
-                {loadingCuotas ? (
-                  <p className="no-data">Cargando cuotas...</p>
-                ) : (
-                  <div className="table-wrapper">
-                    <table className="cuotas-table">
-                      <thead>
-                        <tr>
-                          <th>Mes</th>
-                          <th>Monto</th>
-                          <th>Método de Pago</th>
-                          <th>Fecha de Pago</th>
-                          <th>Estado</th>
-                          <th>Acciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredData.length > 0 ? (
-                          filteredData.map((cuota) => (
-                            <tr key={cuota._id}>
-                              <td>{formatMonth(cuota.date)}</td>
-                              <td>
-                                {new Intl.NumberFormat("es-CL", {
-                                  style: "currency",
-                                  currency: "CLP",
-                                  minimumFractionDigits: 0,
-                                }).format(cuota.amount)}
-                              </td>
-                              <td>{cuota.paymentmethod || "-"}</td>
-                              <td>{cuota.paymentdate ? formatDate(cuota.paymentdate) : "-"}</td>
-                              <td>{cuota.state}</td>
-                              <td className="action-buttons">
-                                <button
-                                  className="action-btn-share-detail"
-                                  onClick={() => handleEditClick(cuota)}
-                                  title={cuota.paymentmethod && cuota.paymentdate ? "Editar" : "Pagar"}
-                                  aria-label={cuota.paymentmethod && cuota.paymentdate ? "Editar cuota" : "Pagar cuota"}
-                                >
-                                  {cuota.paymentmethod && cuota.paymentdate ? <FaEdit /> : <FaMoneyBillWave />}
-                                </button>
-                                <button
-                                  className="action-btn-share-detail"
-                                  onClick={() => handleDelete(cuota._id)}
-                                  title="Eliminar"
-                                  aria-label="Eliminar cuota"
-                                >
-                                  <FaTrash />
-                                </button>
-                                <SendVoucherEmail
-                                  student={selectedStudent}
-                                  cuota={cuota}
-                                  onSendingStart={() => handleSendingStart(cuota._id)}
-                                  onSendingEnd={handleSendingEnd}
-                                />
-                              </td>
-                            </tr>
-                          ))
-                        ) : (
-                          <tr>
-                            <td colSpan="6" className="no-data-row">
-                              No hay cuotas registradas para el año seleccionado.
+                <div className="table-wrapper">
+                  <table className="cuotas-table">
+                    <thead>
+                      <tr>
+                        <th>Mes</th>
+                        <th>Monto</th>
+                        <th>Método de Pago</th>
+                        <th>Fecha de Pago</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredData.length > 0 ? (
+                        filteredData.map((cuota) => (
+                          <tr key={cuota._id}>
+                            <td>{formatMonth(cuota.date)}</td>
+                            <td>
+                              {new Intl.NumberFormat("es-CL", {
+                                style: "currency",
+                                currency: "CLP",
+                                minimumFractionDigits: 0,
+                              }).format(cuota.amount)}
+                            </td>
+                            <td>{cuota.paymentmethod || "-"}</td>
+                            <td>{cuota.paymentdate ? formatDate(cuota.paymentdate) : "-"}</td>
+                            <td>{cuota.state}</td>
+                            <td className="action-buttons">
+                              <button
+                                className="action-btn-share-detail"
+                                onClick={() => handleEditClick(cuota)}
+                                title={cuota.paymentmethod && cuota.paymentdate ? "Editar" : "Pagar"}
+                                aria-label={cuota.paymentmethod && cuota.paymentdate ? "Editar cuota" : "Pagar cuota"}
+                                disabled={isLoading}
+                              >
+                                {cuota.paymentmethod && cuota.paymentdate ? <FaEdit /> : <FaMoneyBillWave />}
+                              </button>
+                              <button
+                                className="action-btn-share-detail"
+                                onClick={() => handleDelete(cuota._id)}
+                                title="Eliminar"
+                                aria-label="Eliminar cuota"
+                                disabled={isLoading}
+                              >
+                                <FaTrash />
+                              </button>
+                              <SendVoucherEmail
+                                student={selectedStudent}
+                                cuota={cuota}
+                                onSendingStart={() => handleSendingStart(cuota._id)}
+                                onSendingEnd={handleSendingEnd}
+                                disabled={isLoading}
+                              />
                             </td>
                           </tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="6" className="no-data-row">
+                            No hay cuotas registradas para el año seleccionado.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </section>
               <ShareFormModal
                 show={showModal}

@@ -89,15 +89,16 @@
 }
 
 .send-voucher {
-  background-color: #007bff;
-  border-color: #007bff;
-  padding: 5px 10px;
-  margin: 2px;
+  background: #04a45c !important;
+  color: white;
+  border: none;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  font-size: 25px !important;
+  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
 }
 
 .send-voucher.disabled {
@@ -126,5 +127,14 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+
+@media (min-width: 577px) {
+   .send-voucher{
+    font-size: 20px !important;
+    padding: 4px !important;
   }
 }

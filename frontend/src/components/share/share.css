@@ -282,6 +282,7 @@
   .cuotas-table td {
     font-size: 13px !important;
     padding: 6px !important;
+    border: none !important;
   }
 
   .action-btn-share {
@@ -331,4 +332,6 @@
   .search-box {
     display: none;
   }
+
+  
 }

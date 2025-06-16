@@ -345,6 +345,11 @@
 
   .add-btn {
     font-size: 12px !important;
+    margin-left: 0px !important;
+  }
+
+  .import-btn {
+    font-size: 12px !important;
   }
 
   .checkbox-custom {
@@ -379,5 +384,14 @@
 
   .search-box {
     display: none;
+  }
+
+  .club{
+    display: none;
+  }
+
+  .btn-student {
+    
+    justify-content: space-around;
   }
 }

@@ -86,23 +86,43 @@ const Users = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.name.trim() || !formData.mail.trim()) {
+      Swal.fire('Error', 'El nombre y el correo son obligatorios.', 'error');
+      return;
+    }
+    if (!formData._id && !formData.password.trim()) {
+      Swal.fire('Error', 'La contraseña es obligatoria para nuevos usuarios.', 'error');
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(formData.mail)) {
+      Swal.fire('Error', 'El correo no es válido.', 'error');
+      return;
+    }
     try {
       if (formData._id) {
         await updateUsuarioAdmin(formData._id, {
-          ...formData,
+          name: formData.name,
+          mail: formData.mail,
+          role: formData.role,
           state: formData.state === 'Activo'
         });
-        Swal.fire('¡Éxito!', 'El usuario ha sido actualizado.', 'success');
       } else {
         await addUsuarioAdmin({
-          ...formData,
+          name: formData.name,
+          mail: formData.mail,
+          password: formData.password,
+          role: formData.role,
           state: formData.state === 'Activo'
         });
-        Swal.fire('¡Éxito!', 'El usuario ha sido agregado.', 'success');
       }
+      await obtenerUsuarios(); // Refrescar la lista
       handleClose();
     } catch (error) {
-      Swal.fire('Error', 'Hubo un problema al procesar la solicitud.', 'error');
+      console.error('Error en handleSubmit:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
     }
   };
 
@@ -139,28 +159,15 @@ const Users = () => {
   };
 
   const handleDelete = async (id) => {
-    const usuario = usuarios.find((usuario) => usuario._id === id);
-    if (usuario.fixed) {
-      Swal.fire('Restricción', 'Este usuario no puede ser eliminado.', 'warning');
-      return;
-    }
-    const result = await Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'No podrás recuperar este usuario después de eliminarlo.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#f42c8c',
-      cancelButtonColor: '#6c757d',
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
-    });
-    if (result.isConfirmed) {
-      try {
-        await deleteUsuarioAdmin(id);
-        Swal.fire('¡Eliminado!', 'El usuario ha sido eliminado.', 'success');
-      } catch (error) {
-        Swal.fire('Error', 'Hubo un problema al eliminar el usuario.', 'error');
-      }
+    try {
+      await deleteUsuarioAdmin(id);
+      await obtenerUsuarios(); // Refrescar la lista
+    } catch (error) {
+      console.error('Error en handleDelete:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
     }
   };
 
@@ -299,7 +306,6 @@ const Users = () => {
           </nav>
         </aside>
         <main className="main-content">
-
           <section className="dashboard-welcome-user">
             <div className="welcome-text">
               <h1>Panel de Usuarios</h1>

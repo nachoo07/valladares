@@ -280,12 +280,12 @@ const ListStudent = () => {
             </div>
           </section>
           <section className="students-filter">
-            <div className="filter-actions">
+            <div className="filter-actions list">
               <div className="category-filters">
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="filter-select"
+                  className="filter-select-list"
                 >
                   <option value="">Seleccionar Categoría</option>
                   {uniqueBirthYears.map((year) => (
@@ -297,7 +297,7 @@ const ListStudent = () => {
                 <select
                   value={conceptFilter}
                   onChange={(e) => setConceptFilter(e.target.value)}
-                  className="filter-select"
+                  className="filter-select-list"
                 >
                   <option value="">Seleccionar Concepto</option>
                   {concepts.map((concept) => (
@@ -307,11 +307,11 @@ const ListStudent = () => {
                   ))}
                 </select>
               </div>
-              <div className="club-filters"> {/* Nuevo filtro de club */}
+              <div className="concept-filters"> {/* Nuevo filtro de club */}
                 <select
                   value={clubFilter}
                   onChange={(e) => setClubFilter(e.target.value)}
-                  className="filter-select"
+                  className="filter-select-list"
                 >
                   <option value="">Seleccionar Club</option>
                   <option value="El Palmar">El Palmar</option>

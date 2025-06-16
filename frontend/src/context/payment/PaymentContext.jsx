@@ -10,7 +10,7 @@ export const PaymentProvider = ({ children }) => {
   const [concepts, setConcepts] = useState([]);
   const [loadingPayments, setLoadingPayments] = useState(false);
   const [loadingConcepts, setLoadingConcepts] = useState(false);
-  const { auth, waitForAuth } = useContext(LoginContext); // Añadimos waitForAuth
+  const { auth, waitForAuth } = useContext(LoginContext);
 
   const fetchConcepts = useCallback(async () => {
     if (auth !== 'admin') {
@@ -84,6 +84,11 @@ export const PaymentProvider = ({ children }) => {
       const response = await axios.get(`/api/payments/student/${studentId}`, {
         withCredentials: true,
       });
+      console.log('fetchPaymentsByStudent response:', {
+        studentId,
+        status: response.status,
+        data: response.data,
+      });
       const data = Array.isArray(response.data) 
         ? response.data 
         : response.data.message 
@@ -93,12 +98,12 @@ export const PaymentProvider = ({ children }) => {
       return data;
     } catch (error) {
       console.error('Error fetching payments:', {
+        studentId,
         message: error.message,
         response: error.response?.data,
         status: error.response?.status,
       });
       Swal.fire('¡Error!', 'No se pudieron obtener los pagos. Revisa la consola para más detalles.', 'error');
-      setPayments([]);
       return [];
     } finally {
       setLoadingPayments(false);
@@ -152,7 +157,7 @@ export const PaymentProvider = ({ children }) => {
     }
   }, [auth]);
 
-  const deletePayment = useCallback(async (paymentId, studentId) => {
+  const deletePaymentConcept = useCallback(async (paymentId, studentId) => {
     if (auth !== 'admin') {
       return;
     }
@@ -172,7 +177,7 @@ export const PaymentProvider = ({ children }) => {
     }
   }, [auth, fetchPaymentsByStudent]);
 
-  const updatePayment = useCallback(async (paymentId, paymentData) => {
+  const updatePaymentConcept = useCallback(async (paymentId, paymentData) => {
     if (auth !== 'admin') {
       return;
     }
@@ -192,16 +197,6 @@ export const PaymentProvider = ({ children }) => {
     }
   }, [auth]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await waitForAuth(); // Espera a que la autenticación esté lista
-      if (auth === 'admin') {
-        await fetchAllPayments();
-      }
-    };
-    fetchData();
-  }, [auth, waitForAuth]); // Añadimos waitForAuth como dependencia
-
   return (
     <PaymentContext.Provider
       value={{
@@ -212,8 +207,8 @@ export const PaymentProvider = ({ children }) => {
         fetchPaymentsByStudent,
         fetchAllPayments,
         createPayment,
-        deletePayment,
-        updatePayment,
+        deletePaymentConcept,
+        updatePaymentConcept,
         fetchConcepts,
         createConcept,
         deleteConcept,

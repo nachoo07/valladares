@@ -666,8 +666,8 @@ const Student = () => {
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>DNI</th>
-                    <th>Club</th>
-                    <th>Estado</th>
+                    <th className='club'>Club</th>
+                    <th className='club'>Estado</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -682,8 +682,8 @@ const Student = () => {
                         <td>{estudiante.name}</td>
                         <td>{estudiante.lastName}</td>
                         <td>{estudiante.dni}</td>
-                        <td>{estudiante.club}</td>
-                        <td>{estudiante.state}</td>
+                        <td className='club'>{estudiante.club}</td>
+                        <td className='club'>{estudiante.state}</td>
                         <td className="action-buttons">
                           <button
                             className="action-btn-student"

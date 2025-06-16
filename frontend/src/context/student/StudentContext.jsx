@@ -332,120 +332,198 @@ const StudentsProvider = ({ children }) => {
     }
   }, [auth]);
 
-  const importStudents = useCallback(async (studentList) => {
-    if (auth !== 'admin') {
-      throw new Error('No tienes permisos para importar estudiantes. Inicia sesión como administrador.');
+  
+const importStudents = useCallback(async (studentList) => {
+  if (auth !== 'admin') {
+    throw new Error('No tienes permisos para importar estudiantes. Inicia sesión como administrador.');
+  }
+
+  try {
+    setLoading(true);
+
+    const formattedStudentList = studentList.map(student => ({
+      ...student,
+      name: capitalizeWords(student.name),
+      lastName: capitalizeWords(student.lastName),
+      address: capitalizeWords(student.address),
+      guardianName: capitalizeWords(student.guardianName),
+    }));
+
+    // Validar imágenes en la lista de estudiantes
+    for (const student of formattedStudentList) {
+      if (student.profileImage instanceof File) {
+        const validImageTypes = [
+          'image/jpeg',
+          'image/png',
+          'image/heic',
+          'image/heif',
+          'image/webp',
+          'image/gif',
+        ];
+        if (!validImageTypes.includes(student.profileImage.type)) {
+          throw new Error(`Imagen inválida para el estudiante con DNI ${student.dni || 'desconocido'}: debe ser un archivo JPEG, PNG, HEIC, WEBP o GIF.`);
+        }
+        if (student.profileImage.size > 5 * 1024 * 1024) { // 5MB
+          throw new Error(`Imagen inválida para el estudiante con DNI ${student.dni || 'desconocido'}: no debe exceder los 5MB.`);
+        }
+      }
     }
 
-    try {
-      setLoading(true);
+    const response = await axios.post('/api/students/import', { students: formattedStudentList }, {
+      withCredentials: true,
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-      const formattedStudentList = studentList.map(student => ({
+    console.log('Respuesta del servidor:', response.data); // Depuración
+
+    const { success, students: importedStudents = [], errors = [], message } = response.data;
+
+    let swalMessage = '';
+    let icon = 'error';
+
+    if (success || importedStudents.length > 0) {
+      const formattedStudents = importedStudents.map(student => ({
         ...student,
-        name: capitalizeWords(student.name),
-        lastName: capitalizeWords(student.lastName),
-        address: capitalizeWords(student.address),
-        guardianName: capitalizeWords(student.guardianName),
-
+        birthDate: student.birthDate ? student.birthDate.split('T')[0] : '',
       }));
+      setEstudiantes(prev => [...prev, ...formattedStudents]);
+      cache.current.set('estudiantes', [...(cache.current.get('estudiantes') || []), ...formattedStudents]);
+      swalMessage = `Se importaron ${importedStudents.length} estudiantes correctamente.`;
+      icon = 'success';
+    } else {
+      swalMessage = message || 'No se importaron estudiantes debido a errores.';
+    }
 
-      // Validar imágenes en la lista de estudiantes
-      for (const student of formattedStudentList) {
-        if (student.profileImage instanceof File) {
-          const validImageTypes = [
-            'image/jpeg',
-            'image/png',
-            'image/heic',
-            'image/heif',
-            'image/webp',
-            'image/gif',
-          ];
-          if (!validImageTypes.includes(student.profileImage.type)) {
-            throw new Error(`Imagen inválida para el estudiante con DNI ${student.dni || 'desconocido'}: debe ser un archivo JPEG, PNG, HEIC, WEBP o GIF.`);
-          }
-          if (student.profileImage.size > 5 * 1024 * 1024) { // 5MB
-            throw new Error(`Imagen inválida para el estudiante con DNI ${student.dni || 'desconocido'}: no debe exceder los 5MB.`);
-          }
+    if (errors.length > 0) {
+      if (swalMessage) swalMessage += '<br /><br />';
+      swalMessage += '<strong>Errores encontrados:</strong><ul>';
+      const errorGroups = errors.reduce((acc, error) => {
+        const rowMatch = error.match(/Fila (\d+)/);
+        const row = rowMatch ? rowMatch[1] : 'Desconocida';
+        const dniMatch = error.match(/DNI (\d+)/);
+        const dni = dniMatch ? dniMatch[1] : 'Desconocido';
+        let errorType = 'Otros errores';
+        let customizedMessage = error;
+
+        if (error.includes('DNI ya existe')) {
+          errorType = 'DNI duplicado';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El DNI ya está registrado. Usa un DNI diferente.`;
+        } else if (error.includes('Error al procesar la imagen')) {
+          errorType = 'Error en imagen';
+          customizedMessage = `Fila ${row}, DNI ${dni}: Hubo un problema al procesar la imagen de perfil. Asegúrate de que sea un archivo JPEG, PNG, HEIC, WEBP o GIF y no exceda los 5MB.`;
+        } else if (error.includes('DNI debe contener')) {
+          errorType = 'DNI inválido';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El DNI debe contener entre 8 y 10 dígitos.`;
+        } else if (error.includes('Faltan campos obligatorios')) {
+          errorType = 'Campos faltantes';
+          customizedMessage = `Fila ${row}, DNI ${dni}: Faltan campos obligatorios.`;
+        } else if (error.includes('Club debe ser')) {
+          errorType = 'Club inválido';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El club debe ser "Valladares" o "El Palmar".`;
+        } else if (error.includes('Turno debe ser')) {
+          errorType = 'Turno inválido';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El turno debe ser "A" o "B".`;
+        } else if (error.includes('Formato de fecha de nacimiento inválido')) {
+          errorType = 'Fecha inválida';
+          customizedMessage = `Fila ${row}, DNI ${dni}: La fecha de nacimiento tiene un formato inválido.`;
         }
-      }
 
-      const response = await axios.post('/api/students/import', { students: formattedStudentList }, {
-        withCredentials: true,
-        headers: { 'Content-Type': 'application/json' },
-      });
+        if (!acc[errorType]) acc[errorType] = [];
+        acc[errorType].push(customizedMessage);
+        return acc;
+      }, {});
 
-      const { success, students: importedStudents = [], errors = [], message } = response.data;
-
-      let swalMessage = '';
-      let icon = 'error';
-
-      if (success || importedStudents.length > 0) {
-        const formattedStudents = importedStudents.map(student => ({
-          ...student,
-          birthDate: student.birthDate ? student.birthDate.split('T')[0] : '',
-        }));
-        setEstudiantes(prev => [...prev, ...formattedStudents]);
-        cache.current.set('estudiantes', [...(cache.current.get('estudiantes') || []), ...formattedStudents]);
-        swalMessage = `Se importaron ${importedStudents.length} estudiantes correctamente.`;
-        icon = 'success';
-      } else {
-        swalMessage = message || 'No se importaron estudiantes debido a errores.';
-      }
-
-      if (errors.length > 0) {
-        if (swalMessage) swalMessage += '<br /><br />';
-        swalMessage += '<strong>Errores encontrados:</strong><ul>';
-        const errorGroups = errors.reduce((acc, error) => {
-          const rowMatch = error.match(/Fila (\d+)/);
-          const row = rowMatch ? rowMatch[1] : 'Desconocida';
-          const dniMatch = error.match(/DNI (\d+)/);
-          const dni = dniMatch ? dniMatch[1] : 'Desconocido';
-          let errorType = 'Otros errores';
-          let customizedMessage = error;
-
-          if (error.includes('DNI ya existe')) {
-            errorType = 'DNI duplicado';
-            customizedMessage = `Fila ${row}, DNI ${dni}: El DNI ya está registrado. Usa un DNI diferente.`;
-          } else if (error.includes('Error al procesar la imagen')) {
-            errorType = 'Error en imagen';
-            customizedMessage = `Fila ${row}, DNI ${dni}: Hubo un problema al procesar la imagen de perfil. Asegúrate de que sea un archivo JPEG, PNG, HEIC, WEBP o GIF y no exceda los 5MB.`;
-          }
-
-          if (!acc[errorType]) acc[errorType] = [];
-          acc[errorType].push(customizedMessage);
-          return acc;
-        }, {});
-
-        for (const [errorType, errorMessages] of Object.entries(errorGroups)) {
-          swalMessage += `<li><strong>${errorType}:</strong> ${errorMessages.length} casos<ul>`;
-          errorMessages.slice(0, 5).forEach(msg => {
-            swalMessage += `<li>${msg}</li>`;
-          });
-          if (errorMessages.length > 5) {
-            swalMessage += `<li>(y ${errorMessages.length - 5} errores más...)</li>`;
-          }
-          swalMessage += '</ul></li>';
+      for (const [errorType, errorMessages] of Object.entries(errorGroups)) {
+        swalMessage += `<li><strong>${errorType}:</strong> ${errorMessages.length} casos<ul>`;
+        errorMessages.slice(0, 5).forEach(msg => {
+          swalMessage += `<li>${msg}</li>`;
+        });
+        if (errorMessages.length > 5) {
+          swalMessage += `<li>(y ${errorMessages.length - 5} errores más...)</li>`;
         }
-        swalMessage += '</ul>';
+        swalMessage += '</ul></li>';
       }
+      swalMessage += '</ul>';
+    }
 
-      Swal.fire({
-        title: icon === 'success' ? '¡Éxito!' : '¡Error!',
-        html: swalMessage,
-        icon,
-        confirmButtonText: 'Aceptar',
-        width: '600px',
-        customClass: {
-          htmlContainer: 'swal2-html-container-scroll',
-        },
-      });
+    Swal.fire({
+      title: icon === 'success' ? '¡Éxito!' : '¡Error!',
+      html: swalMessage,
+      icon,
+      confirmButtonText: 'Aceptar',
+      width: '600px',
+      customClass: {
+        htmlContainer: 'swal2-html-container-scroll',
+      },
+    });
 
-      await obtenerEstudiantes();
-    } catch (error) {
-      console.error('Error al importar estudiantes:', error);
-      let errorMessage = 'Ha ocurrido un error al importar estudiantes. Por favor, intenta de nuevo.';
+    await obtenerEstudiantes();
+  } catch (error) {
+    console.error('Error al importar estudiantes:', error);
+    console.log('Detalles del error:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+    });
+
+    let errorMessage = 'Ha ocurrido un error al importar estudiantes. Por favor, intenta de nuevo.';
+    let icon = 'error';
+
+    if (error.response?.data?.errors?.length > 0) {
+      errorMessage = '';
+      if (error.response.data.message) {
+        errorMessage += `${error.response.data.message}<br /><br />`;
+      }
+      errorMessage += '<strong>Errores encontrados:</strong><ul>';
+      const errorGroups = error.response.data.errors.reduce((acc, error) => {
+        const rowMatch = error.match(/Fila (\d+)/);
+        const row = rowMatch ? rowMatch[1] : 'Desconocida';
+        const dniMatch = error.match(/DNI (\d+)/);
+        const dni = dniMatch ? dniMatch[1] : 'Desconocido';
+        let errorType = 'Otros errores';
+        let customizedMessage = error;
+
+        if (error.includes('DNI ya existe')) {
+          errorType = 'DNI duplicado';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El DNI ya está registrado. Usa un DNI diferente.`;
+        } else if (error.includes('Error al procesar la imagen')) {
+          errorType = 'Error en imagen';
+          customizedMessage = `Fila ${row}, DNI ${dni}: Hubo un problema al procesar la imagen de perfil. Asegúrate de que sea un archivo JPEG, PNG, HEIC, WEBP o GIF y no exceda los 5MB.`;
+        } else if (error.includes('DNI debe contener')) {
+          errorType = 'DNI inválido';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El DNI debe contener entre 8 y 10 dígitos.`;
+        } else if (error.includes('Faltan campos obligatorios')) {
+          errorType = 'Campos faltantes';
+          customizedMessage = `Fila ${row}, DNI ${dni}: Faltan campos obligatorios.`;
+        } else if (error.includes('Club debe ser')) {
+          errorType = 'Club inválido';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El club debe ser "Valladares" o "El Palmar".`;
+        } else if (error.includes('Turno debe ser')) {
+          errorType = 'Turno inválido';
+          customizedMessage = `Fila ${row}, DNI ${dni}: El turno debe ser "A" o "B".`;
+        } else if (error.includes('Formato de fecha de nacimiento inválido')) {
+          errorType = 'Fecha inválida';
+          customizedMessage = `Fila ${row}, DNI ${dni}: La fecha de nacimiento tiene un formato inválido.`;
+        }
+
+        if (!acc[errorType]) acc[errorType] = [];
+        acc[errorType].push(customizedMessage);
+        return acc;
+      }, {});
+
+      for (const [errorType, errorMessages] of Object.entries(errorGroups)) {
+        errorMessage += `<li><strong>${errorType}:</strong> ${errorMessages.length} casos<ul>`;
+        errorMessages.slice(0, 5).forEach(msg => {
+          errorMessage += `<li>${msg}</li>`;
+        });
+        if (errorMessages.length > 5) {
+          errorMessage += `<li>(y ${errorMessages.length - 5} errores más...)</li>`;
+        }
+        errorMessage += '</ul></li>';
+      }
+      errorMessage += '</ul>';
+    } else {
       const rawMessage = error.response?.data?.message || error.response?.data?.error || error.message;
-
       if (rawMessage.includes('DNI ya existe')) {
         errorMessage = 'Uno o más estudiantes tienen un DNI duplicado. Por favor, revisa los DNIs en el archivo Excel.';
       } else if (rawMessage.includes('Error al procesar la imagen')) {
@@ -453,21 +531,23 @@ const StudentsProvider = ({ children }) => {
       } else {
         errorMessage = rawMessage;
       }
-
-      Swal.fire({
-        title: '¡Error!',
-        html: errorMessage,
-        icon: 'error',
-        confirmButtonText: 'Aceptar',
-        width: '600px',
-        customClass: {
-          htmlContainer: 'swal2-html-container-scroll',
-        },
-      });
-    } finally {
-      setLoading(false);
     }
-  }, [auth, obtenerEstudiantes]);
+
+    Swal.fire({
+      title: '¡Error!',
+      html: errorMessage,
+      icon,
+      confirmButtonText: 'Aceptar',
+      width: '600px',
+      customClass: {
+        htmlContainer: 'swal2-html-container-scroll',
+      },
+    });
+  } finally {
+    setLoading(false);
+  }
+}, [auth, obtenerEstudiantes]);
+
 
   const countStudentsByState = useCallback((state) => {
     const studentsArray = Array.isArray(estudiantes) ? estudiantes : [];

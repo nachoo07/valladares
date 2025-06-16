@@ -455,6 +455,11 @@
     display: none;
   }
 
+  .dashboard-welcome-user {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .main-content {
     padding: 15px;
   }
@@ -466,9 +471,17 @@
   }
 
   .action-btn {
-    padding: 3px;
-    font-size: 15px !important;
+     font-size: 20px !important;
+    padding: 4px !important;
   }
+
+  .action-btn-user {
+    font-size: 20px !important;
+    padding: 4px !important;
+    margin: 0px;
+  }
+
+
 
   .pagination-btn {
     padding: 6px 10px;

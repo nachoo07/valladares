@@ -200,13 +200,13 @@
 }
 
 .selected-student{
-     display: flex;
+  display: flex;
   align-items: center;
   background-color: #fff;
   border: 1px solid #e0e6e0;
   border-radius: 25px;
   padding: 8px 12px;
-  margin-bottom: 8px;
+  margin-bottom: 8px ;
   transition: all 0.3s ease;
 }
 
@@ -234,6 +234,7 @@
 .selection-actions {
   display: flex;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .select-all-btn,
@@ -262,20 +263,21 @@
   color: var(--text-color);
 }
 
-.select-all-btn:hover,
-.select-overdue-btn:hover {
-  background: var(--primary-hover);
+
+.select-all-btn.active,
+.select-overdue-btn.active {
+  background: #e0e6e0 !important; /* Gris claro para botón activo */
+  color: var(--text-color);
+  transition: none; /* Evita transiciones en hover */
 }
 
 .cancel-btn:hover {
   background: #ccc;
 }
 
-.select-all-btn:disabled,
-.select-overdue-btn:disabled,
-.cancel-btn:disabled {
-  background: var(--border-color);
-  cursor: not-allowed;
+.select-all-btn.active:hover,
+.select-overdue-btn.active:hover {
+  background: #e0e6e0 !important; /* Mantiene el mismo gris claro al pasar el mouse */
 }
 
 .email-subject {
@@ -348,6 +350,16 @@
   background: #ccc;
 }
 
+ .email{
+  background: #04a45c !important;
+  color: white !important;
+  }
+
+  .email:hover {
+    background: #1b5930 !important;
+    
+  }
+
 @media (max-width: 576px) {
   .sidebar {
     display: none;
@@ -367,9 +379,11 @@
   }
 
   .selection-actions {
-    flex-direction: column;
-    gap: 5px;
+   font-size: 14px;
+   justify-content: space-between;
   }
+
+ 
 
   .select-all-btn,
   .select-overdue-btn,
@@ -396,4 +410,15 @@
   .search-section {
     display: none; /* Ocultar buscador en pantallas móviles */
   }
+
+  .selected-student{
+  padding: 8px 12px;
+  font-size: 11px;
+  margin-bottom: 0px;
+}
+
+.remove-icon {
+  font-size: 12px;
+  
+}
 }

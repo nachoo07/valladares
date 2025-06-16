@@ -15,10 +15,10 @@ import logo from '../../assets/logo.png';
 
 const Settings = () => {
   const { obtenerCuotas } = useContext(SharesContext);
-  const { auth } = useContext(LoginContext); // Solo usamos auth para depuración
+  const { auth } = useContext(LoginContext);
   const [cuotaBase, setCuotaBase] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Control de carga
+  const [isLoading, setIsLoading] = useState(true);
   const profileRef = useRef(null);
   const { userData, logout } = useContext(LoginContext);
   const navigate = useNavigate();
@@ -69,19 +69,19 @@ const Settings = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setIsLoading(true); // Iniciamos la carga
+        setIsLoading(true);
         const response = await axios.get('/api/config/cuotaBase', { withCredentials: true });
         const value = response.data.value || 30000;
-        setCuotaBase(value); // Carga el valor directamente al estado
+        setCuotaBase(value);
       } catch (error) {
-        setCuotaBase(30000); // Valor por defecto si falla
+        setCuotaBase(30000);
         Swal.fire('Error', 'No se pudieron cargar los datos iniciales.', 'error');
       } finally {
-        setIsLoading(false); // Terminamos la carga
+        setIsLoading(false);
       }
     };
     fetchData();
-  }, []); // Sin dependencias, se ejecuta solo al montar
+  }, []);
 
   const handleSaveCuotaBase = async () => {
     setLoading(true);
@@ -97,7 +97,7 @@ const Settings = () => {
       }, { withCredentials: true });
       Swal.fire('¡Éxito!', 'Monto base actualizado para el próximo mes', 'success');
     } catch (error) {
-      console.error('10. Error al guardar cuota base:', error);
+      console.error('Error al guardar cuota base:', error);
       Swal.fire('Error', 'No se pudo actualizar el monto base', 'error');
     } finally {
       setLoading(false);
@@ -135,11 +135,6 @@ const Settings = () => {
   2. Actualizar Cuotas Pendientes: Si se te olvidó actualizar antes y las cuotas de este mes (por ejemplo, junio) siguen en $40.000, poné $45.000 en el monto base, guardalo y hacé clic en "Actualizar Cuotas". Esto cambia las cuotas no pagadas a $45.000, pero solo funciona del 1 al 10 de cada mes.  
 `;
 
-
-  if (isLoading) {
-    return <div>Cargando datos...</div>; // Mostrar un mensaje mientras se cargan los datos
-  }
-
   return (
     <div className="app-container">
       {windowWidth <= 576 && (
@@ -150,7 +145,6 @@ const Settings = () => {
       )}
       {windowWidth > 576 && (
         <header className="desktop-nav-header">
-          
           <div className="header-logo-setting" onClick={() => navigate('/')}>
             <img src={logo} alt="Valladares Fútbol" className="logo-image" />
           </div>
@@ -227,71 +221,80 @@ const Settings = () => {
           </nav>
         </aside>
         <main className={`main-content ${!isMenuOpen ? 'expanded' : ''}`}>
-          <section className="dashboard-welcome">
-            <div className="welcome-text">
-              <h1>Ajustes de Cuotas</h1>
+          {isLoading ? (
+            <div className="loading-message">
+              Cargando datos...
             </div>
-          </section>
-          {windowWidth > 576 && (
-            <section className="search-section">
-              <div className="search-container">
-                <FaSearch className="search-icon" />
-                <input
-                  type="text"
-                  placeholder="Buscar ajustes..."
-                  className="search-input"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                {searchQuery && (
+          ) : (
+            <>
+              <section className="dashboard-welcome">
+                <div className="welcome-text">
+                  <h1>Ajustes de Cuotas</h1>
+                </div>
+              </section>
+              {windowWidth > 576 && (
+                <section className="search-section">
+                  <div className="search-container">
+                    <FaSearch className="search-icon" />
+                    <input
+                      type="text"
+                      placeholder="Buscar ajustes..."
+                      className="search-input"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    {searchQuery && (
+                      <button
+                        className="search-clear"
+                        onClick={() => setSearchQuery('')}
+                      >
+                        <FaTimesClear />
+                      </button>
+                    )}
+                  </div>
+                </section>
+              )}
+              <div className="cards-setting">
+                <div className="settings-card">
+                  <h3>Monto Base de Cuota</h3>
+                  <p>Define el precio de las cuotas para el próximo mes.</p>
+                  <div className="input-group">
+                    <input
+                      type="number"
+                      value={cuotaBase}
+                      onChange={(e) => setCuotaBase(e.target.value)}
+                      className="cuota-input"
+                      min="0"
+                      placeholder="Ingrese monto"
+                      disabled={loading}
+                    />
+                    <button
+                      onClick={handleSaveCuotaBase}
+                      disabled={loading}
+                      className="action-button save-button"
+                    >
+                      {loading ? 'Guardando...' : 'Guardar'}
+                    </button>
+                  </div>
+                </div>
+                <div className="settings-card">
+                  <h3>Actualizar Cuotas Pendientes</h3>
+                  <p>Cambia las cuotas no pagadas al monto base actual (días 1-10).</p>
                   <button
-                    className="search-clear"
-                    onClick={() => setSearchQuery('')}
+                    onClick={handleUpdatePendingCuotas}
+                    disabled={loading}
+                    className="action-button update-button"
                   >
-                    <FaTimesClear />
+                    {loading ? 'Actualizando...' : 'Actualizar'}
                   </button>
-                )}
+                </div>
               </div>
-            </section>
+              <div className="info-section">
+                <FaInfoCircle className="info-icon" />
+                <pre className="info-text">{infoMessage}</pre>
+              </div>
+            </>
           )}
-          <div className="cards-setting">
-            <div className="settings-card">
-              <h3>Monto Base de Cuota</h3>
-              <p>Define el precio de las cuotas para el próximo mes.</p>
-              <div className="input-group">
-                <input
-                  type="number"
-                  value={cuotaBase}
-                  onChange={(e) => setCuotaBase(e.target.value)}
-                  className="cuota-input"
-                  min="0"
-                  placeholder="Ingrese monto"
-                />
-                <button
-                  onClick={handleSaveCuotaBase}
-                  disabled={loading}
-                  className="action-button save-button"
-                >
-                  {loading ? 'Guardando...' : 'Guardar'}
-                </button>
-              </div>
-            </div>
-            <div className="settings-card">
-              <h3>Actualizar Cuotas Pendientes</h3>
-              <p>Cambia las cuotas no pagadas al monto base actual (días 1-10).</p>
-              <button
-                onClick={handleUpdatePendingCuotas}
-                disabled={loading}
-                className="action-button update-button"
-              >
-                {loading ? 'Actualizando...' : 'Actualizar'}
-              </button>
-            </div>
-          </div>
-          <div className="info-section">
-            <FaInfoCircle className="info-icon" />
-            <pre className="info-text">{infoMessage}</pre>
-          </div>
         </main>
       </div>
     </div>
