@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext, useContext, useCallback } from "react";
+import { useEffect, useState, createContext, useContext, useCallback, useRef } from "react";
 import axios from "axios";
 import { LoginContext } from "../login/LoginContext";
 
@@ -6,8 +6,15 @@ export const SharesContext = createContext();
 
 const SharesProvider = ({ children }) => {
   const [cuotas, setCuotas] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [cuotasStatusCount, setCuotasStatusCount] = useState({
+    pendientes: 0,
+    vencidas: 0,
+    pagadas: 0,
+  });
+  const [loading, setLoading] = useState(true);
+    const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
   const { auth, waitForAuth } = useContext(LoginContext);
+    const hasFetched = useRef(false);
 
   const obtenerCuotas = useCallback(async () => {
     if (auth !== "admin") return;
@@ -20,6 +27,26 @@ const SharesProvider = ({ children }) => {
       setCuotas(data);
     } catch (error) {
       console.error("Error obteniendo cuotas:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [auth]);
+
+    const obtenerCuotasStatusCount = useCallback(async () => {
+    if (auth !== "admin") return;
+    try {
+      setLoading(true);
+      const response = await axios.get("/api/shares/status-count", {
+        withCredentials: true,
+      });
+      setCuotasStatusCount({
+        pendientes: response.data.pendientes || 0,
+        vencidas: response.data.vencidas || 0,
+        pagadas: response.data.pagadas || 0,
+      });
+    } catch (error) {
+      console.error("Error obteniendo conteos de cuotas:", error, error.response?.data);
+      setCuotasStatusCount({ pendientes: 0, vencidas: 0, pagadas: 0 });
     } finally {
       setLoading(false);
     }
@@ -132,19 +159,24 @@ const SharesProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       await waitForAuth();
-      if (auth === "admin") {
-        await obtenerCuotas();
+      if (auth === "admin" && !hasFetched.current) {
+        hasFetched.current = true;
+        await Promise.all([obtenerCuotas(), obtenerCuotasStatusCount()]); // Ejecutar ambas al mismo tiempo
+        setIsInitialLoadComplete(true);
       }
     };
     fetchData();
-  }, [auth, obtenerCuotas, waitForAuth]);
+  }, [auth, waitForAuth, obtenerCuotasStatusCount]);
 
   return (
     <SharesContext.Provider
       value={{
         cuotas,
+        cuotasStatusCount,
         loading,
+        isInitialLoadComplete,
         obtenerCuotas,
+        obtenerCuotasStatusCount,
         obtenerCuotasPorEstudiante,
         addCuota,
         deleteCuota,

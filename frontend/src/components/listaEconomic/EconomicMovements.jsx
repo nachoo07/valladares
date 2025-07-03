@@ -8,7 +8,7 @@ import { LoginContext } from "../../context/login/LoginContext";
 import { StudentsContext } from "../../context/student/StudentContext";
 import AppNavbar from "../navbar/AppNavbar";
 import logo from "../../assets/logo.png";
-import * as XLSX from "xlsx";
+import * as XLSX from "xlsx-js-style";
 import "./economicMovements.css";
 
 const EconomicMovements = () => {
@@ -52,18 +52,47 @@ const EconomicMovements = () => {
     }, []);
 
     useEffect(() => {
-        if (auth === "admin" && !isMounted) {
-            setIsMounted(true);
-            fetchAllPayments();
-            fetchMotions();
-            setCuotas([]);
-            obtenerCuotasPorFecha(selectedDate).then((newCuotas) => {
-            });
-        }
+        const loadData = async () => {
+            if (auth === "admin" && !isMounted) {
+                setIsMounted(true);
+                try {
+                    await Promise.all([
+                        fetchAllPayments(),
+                        fetchMotions(),
+                        obtenerCuotasPorFecha(selectedDate).then((newCuotas) => {
+                            console.log("Cuotas cargadas:", newCuotas); // Depuración
+                            setCuotas(newCuotas);
+                        })
+                    ]);
+                } catch (error) {
+                    console.error("Error cargando datos:", error);
+                }
+            }
+        };
+        loadData();
     }, [auth, fetchAllPayments, fetchMotions, obtenerCuotasPorFecha, selectedDate, setCuotas, isMounted]);
 
     useEffect(() => {
+        const fetchCuotasForDate = async () => {
+            if (auth === "admin") {
+                try {
+                    const newCuotas = await obtenerCuotasPorFecha(selectedDate);
+                    console.log("Cuotas actualizadas para fecha:", selectedDate, newCuotas); // Depuración
+                    setCuotas(newCuotas);
+                } catch (error) {
+                    console.error("Error actualizando cuotas por fecha:", error);
+                }
+            }
+        };
+        fetchCuotasForDate();
+    }, [auth, obtenerCuotasPorFecha, selectedDate, setCuotas]);
+
+    useEffect(() => {
         const combineData = () => {
+            if (!payments || !motions || !cuotas || !estudiantes) {
+                setData([]);
+                return;
+            }
             const seen = new Set();
             const allMovements = [
                 ...payments.map(p => {
@@ -87,20 +116,26 @@ const EconomicMovements = () => {
                     const id = c._id;
                     if (seen.has(id)) return null;
                     seen.add(id);
+                    const paymentDate = c.paymentdate || c.date; // Usar paymentdate o date como fallback
                     return {
                         ...c,
                         type: "Cuota",
                         name: c.student?._id ? `${c.student.name || ""} ${c.student.lastName || ""}`.trim() || "-" : "-",
                         concept: "-",
                         paymentMethod: c.paymentmethod || "-",
-                        paymentDate: c.paymentdate
+                        paymentDate: paymentDate // Asegurar que paymentDate esté definido
                     };
                 }).filter(c => c !== null),
             ].filter(m => {
-                if (!m.paymentDate && !m.date) return false;
+                if (!m.paymentDate && !m.date) {
+                    console.log("Movimiento sin fecha:", m); // Depuración
+                    return false;
+                }
                 const movementDate = new Date(m.paymentDate || m.date);
-                const adjustedDate = new Date(movementDate.getTime());
-                return adjustedDate.toISOString().split("T")[0] === selectedDate;
+                const adjustedDate = new Date(movementDate.getTime() + 3 * 60 * 60 * 1000); // Ajuste UTC-3
+                const movementDateStr = adjustedDate.toISOString().split("T")[0];
+                console.log(`Comparando ${movementDateStr} con ${selectedDate}`); // Depuración
+                return movementDateStr === selectedDate;
             });
             setData(allMovements);
         };
@@ -113,34 +148,70 @@ const EconomicMovements = () => {
 
     const handleExportExcel = () => {
         const totalAmount = data.reduce((sum, m) => sum + (m.amount || 0), 0);
-        const cashAmount = data.reduce((sum, m) =>
-            (m.paymentMethod.toLowerCase() === "efectivo") ? sum + (m.amount || 0) : sum, 0);
-        const transferAmount = data.reduce((sum, m) =>
-            (m.paymentMethod.toLowerCase() === "transferencia") ? sum + (m.amount || 0) : sum, 0);
+        const cashAmount = data.reduce(
+            (sum, m) => (m.paymentMethod.toLowerCase() === "efectivo" ? sum + (m.amount || 0) : sum),
+            0
+        );
+        const transferAmount = data.reduce(
+            (sum, m) => (m.paymentMethod.toLowerCase() === "transferencia" ? sum + (m.amount || 0) : sum),
+            0
+        );
 
-        const ws = XLSX.utils.json_to_sheet([
-            ...data.map(m => ({
-                Fecha: new Date(new Date(m.paymentDate || m.date).getTime() + (3 * 60 * 60 * 1000)).toLocaleDateString("es-ES", {
-                    timeZone: 'America/Argentina/Buenos_Aires',
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                }),
+        const exportData = [
+            ...data.map((m) => ({
+                Fecha: new Date(new Date(m.paymentDate || m.date).getTime() + 3 * 60 * 60 * 1000).toLocaleDateString(
+                    "es-ES",
+                    {
+                        timeZone: "America/Argentina/Buenos_Aires",
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                    }
+                ),
                 Concepto: capitalizeFirstLetter(m.concept || "-"),
-                Monto: `$${m.amount.toLocaleString("es-ES")}`,
+                Monto: m.amount,
                 Método: capitalizeFirstLetter(m.paymentMethod || "-"),
                 Tipo: capitalizeFirstLetter(m.type || "-"),
-                Nombre: capitalizeFirstLetter(m.name || "-")
+                Nombre: capitalizeFirstLetter(m.name || "-"),
             })),
             {
                 Fecha: "Total",
                 Concepto: "",
-                Monto: `$${totalAmount.toLocaleString("es-ES")}`,
-                Método: `Efectivo: $${cashAmount.toLocaleString("es-ES")} - Transferencia: $${transferAmount.toLocaleString("es-ES")}`,
+                Monto: totalAmount,
+                Método: `Efectivo: $${cashAmount.toLocaleString("es-ES")} - Transferencia: $${transferAmount.toLocaleString(
+                    "es-ES"
+                )}`,
                 Tipo: "",
-                Nombre: ""
+                Nombre: "",
+            },
+        ];
+
+        const ws = XLSX.utils.json_to_sheet(exportData);
+
+        const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "e31fa8" } }, border: { style: "thin" }, alignment: { horizontal: "center" } };
+        const cellStyle = { border: { style: "thin" }, alignment: { horizontal: "left" } };
+        const totalRowStyle = { font: { bold: true }, fill: { fgColor: { rgb: "D3D3D3" } }, border: { style: "thin" }, alignment: { horizontal: "left" } };
+
+        const headers = ["Fecha", "Concepto", "Monto", "Método", "Tipo", "Nombre"];
+        headers.forEach((header, index) => {
+            const cellRef = XLSX.utils.encode_cell({ r: 0, c: index });
+            if (ws[cellRef]) ws[cellRef].s = headerStyle;
+        });
+
+        const range = XLSX.utils.decode_range(ws["!ref"]);
+        for (let row = 1; row <= range.e.r; row++) {
+            for (let col = 0; col <= range.e.c; col++) {
+                const cellRef = XLSX.utils.encode_cell({ r: row, c: col });
+                if (ws[cellRef]) {
+                    ws[cellRef].s = row === range.e.r ? totalRowStyle : cellStyle;
+                    if (col === 2) ws[cellRef].z = "$#,##0";
+                }
             }
-        ]);
+        }
+
+        ws["!merges"] = [{ s: { r: range.e.r, c: 3 }, e: { r: range.e.r, c: 4 } }];
+        ws["!cols"] = [{ wch: 12 }, { wch: 20 }, { wch: 15 }, { wch: 25 }, { wch: 22 }, { wch: 20 }];
+
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Movimientos");
         XLSX.writeFile(wb, `Movimientos_${selectedDate}.xlsx`);
@@ -218,12 +289,12 @@ const EconomicMovements = () => {
                             value={selectedDate} 
                             onChange={handleDateChange} 
                             max={new Date().toISOString().split("T")[0]} 
-                            disabled={isLoading} // Deshabilitar durante carga
+                            disabled={isLoading} 
                         />
                         <button 
                             className="export-btn" 
                             onClick={handleExportExcel} 
-                            disabled={isLoading || data.length === 0} // Deshabilitar durante carga o sin datos
+                            disabled={isLoading || data.length === 0} 
                         >
                             <FaFileExport /> Exportar a Excel
                         </button>

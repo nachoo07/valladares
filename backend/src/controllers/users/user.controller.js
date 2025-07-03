@@ -5,12 +5,9 @@ import pino from "pino";
 const logger = pino();
 
 export const getAllUsers = async (req, res, next) => {
-  const { page = 1, limit = 10 } = req.query;
   try {
     const users = await User.find()
       .select("name mail role state lastLogin")
-      .skip((page - 1) * limit)
-      .limit(parseInt(limit))
       .lean();
     res.status(200).json(users.length ? users : { message: "No hay usuarios disponibles" });
   } catch (error) {
@@ -20,9 +17,7 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const createUser = async (req, res, next) => {
-  console.log("Cuerpo de la solicitud:", req.body);
   const { name, mail, password, role } = req.body; // Evita sanitize por ahora para depuración
-
   // Validación de campos requeridos
   if (!name || !mail || !password || !role) {
     logger.warn({ body: req.body }, "Faltan campos requeridos para crear usuario");
@@ -31,7 +26,6 @@ export const createUser = async (req, res, next) => {
       missingFields: { name: !name, mail: !mail, password: !password, role: !role },
     });
   }
-
   try {
     const sanitizedUser = {
       name: sanitize(name),

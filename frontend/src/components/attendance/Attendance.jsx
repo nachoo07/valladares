@@ -34,6 +34,7 @@ const Attendance = () => {
   const [reportEndDate, setReportEndDate] = useState(endOfMonth(new Date()));
   const [reportFormat, setReportFormat] = useState('excel');
   const [reportError, setReportError] = useState(null);
+  const [attendanceBackup, setAttendanceBackup] = useState({});
   const navigate = useNavigate();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -246,12 +247,14 @@ const Attendance = () => {
   };
 
   const handleEditAttendance = () => {
-    setIsEditing(true);
-  };
+  setAttendanceBackup({ ...attendance }); // Guardar una copia del estado actual
+  setIsEditing(true);
+};
 
   const handleCancelEdit = () => {
-    setIsEditing(false);
-  };
+  setAttendance(attendanceBackup); // Restaurar el estado original
+  setIsEditing(false);
+};
 
   const handleLogout = async () => {
     logout();

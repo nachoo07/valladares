@@ -20,7 +20,7 @@ const router = express.Router();
 const validateStudent = [
   body('name').notEmpty().withMessage('Nombre es obligatorio'),
   body('lastName').notEmpty().withMessage('Apellido es obligatorio'),
-  body('dni').matches(/^\d{8,10}$/).withMessage('DNI debe tener entre 8 y 10 dígitos'),
+  body('dni').matches(/^\d{7,9}$/).withMessage('DNI debe tener entre 7 y 9 dígitos'),
   body('birthDate').notEmpty().isDate().withMessage('Fecha de nacimiento válida es obligatoria'),
   body('address').notEmpty().withMessage('Dirección es obligatoria'),
   body('category').notEmpty().withMessage('Categoría es obligatoria'),
@@ -43,7 +43,7 @@ router.post('/import', protect, admin, [
   body('students.*').isObject().withMessage('Cada estudiante debe ser un objeto'),
   body('students.*.name').notEmpty().withMessage('Nombre es obligatorio'),
   body('students.*.lastName').notEmpty().withMessage('Apellido es obligatorio'),
-  body('students.*.dni').matches(/^\d{8,10}$/).withMessage('DNI debe tener entre 8 y 10 dígitos'),
+  body('students.*.dni').matches(/^\d{7,9}$/).withMessage('DNI debe tener entre 7 y 9 dígitos'),
   body('students.*.birthDate').notEmpty().isDate().withMessage('Fecha de nacimiento válida es obligatoria'),
   body('students.*.address').notEmpty().withMessage('Dirección es obligatoria'),
   body('students.*.category').notEmpty().withMessage('Categoría es obligatoria'),

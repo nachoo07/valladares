@@ -10,7 +10,8 @@ import {
     getSharesByDate,
     getSharesByDateRange,
     getStudentsWithShareStatus,
-    updatePendingShares
+    updatePendingShares,
+    getSharesStatusCount
 } from '../../controllers/share/share.controller.js';
 import { protect, admin } from '../../middlewares/login/protect.js'; // Importar los middlewares
 
@@ -31,6 +32,7 @@ router.post('/create', [
   ], protect, admin, getSharesByDateRange);
   router.get('/students-status', protect, admin, getStudentsWithShareStatus);
   router.put('/update-pending', protect, admin, updatePendingShares);
+  router.get('/status-count', protect, admin, getSharesStatusCount); // Ruta estática antes de /:id
   router.get('/:id', [param('id').isMongoId()], protect, admin, getShareById);
   router.get('/student/:studentId', [param('studentId').isMongoId()], protect, admin, getSharesByStudent);
   router.get('/', protect, admin, getAllShares);

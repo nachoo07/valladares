@@ -7,17 +7,53 @@ import pino from 'pino';
 const logger = pino();
 
 export const getAllShares = async (req, res) => {
-  const { page = 1, limit = 10 } = req.query;
   try {
     const shares = await Share.find()
       .populate({ path: 'student', select: 'name lastName' })
-      .skip((page - 1) * limit)
-      .limit(parseInt(limit))
       .lean();
     res.status(200).json(shares.length ? shares : { message: "No hay cuotas disponibles" });
   } catch (error) {
     logger.error({ error: error.message }, 'Error al obtener cuotas');
     res.status(500).json({ message: 'Error al obtener cuotas' });
+  }
+};
+
+export const getSharesStatusCount = async (req, res) => {
+  try {
+    logger.info('Iniciando getSharesStatusCount'); // Log para confirmar que se llama el endpoint
+    const counts = await Share.aggregate([
+      {
+        $group: {
+          _id: '$state',
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          state: '$_id',
+          count: 1,
+        },
+      },
+    ]);
+
+    const result = {
+      pendientes: 0,
+      vencidas: 0,
+      pagadas: 0,
+    };
+
+    counts.forEach((item) => {
+      if (item.state === 'Pendiente') result.pendientes = item.count;
+      if (item.state === 'Vencido') result.vencidas = item.count;
+      if (item.state === 'Pagado') result.pagadas = item.count;
+    });
+
+    logger.info({ counts: result }, 'Conteo de cuotas exitoso');
+    res.status(200).json(result);
+  } catch (error) {
+    logger.error({ error: error.message, stack: error.stack }, 'Error al obtener conteos de cuotas');
+    res.status(500).json({ message: 'Error al obtener conteos de cuotas' });
   }
 };
 
@@ -135,13 +171,10 @@ export const getShareById = async (req, res) => {
 
 export const getSharesByStudent = async (req, res) => {
   const { studentId } = sanitize(req.params);
-  const { page = 1, limit = 10 } = req.query;
 
   try {
     const shares = await Share.find({ student: studentId })
       .populate({ path: 'student', select: 'name lastName' })
-      .skip((page - 1) * limit)
-      .limit(parseInt(limit))
       .lean();
     res.status(200).json(shares.length ? shares : { message: "No hay cuotas disponibles para este estudiante" });
   } catch (error) {

@@ -364,44 +364,39 @@ const Student = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validar formato de imagen en el frontend
-    if (formData.profileImage instanceof File) {
-      const validImageTypes = [
-        'image/jpeg',
-        'image/png',
-        'image/heic',
-        'image/heif',
-        'image/webp',
-        'image/gif',
-      ];
-      if (!validImageTypes.includes(formData.profileImage.type)) {
-        Swal.fire({
-          title: '¡Error!',
-          text: 'La imagen de perfil debe ser un archivo JPEG, PNG, HEIC, WEBP o GIF.',
-          icon: 'error',
-          confirmButtonText: 'Aceptar',
-        });
-        return;
-      }
-      if (formData.profileImage.size > 5 * 1024 * 1024) { // 5MB
-        Swal.fire({
-          title: '¡Error!',
-          text: 'La imagen de perfil no debe exceder los 5MB.',
-          icon: 'error',
-          confirmButtonText: 'Aceptar',
-        });
-        return;
-      }
+     // Validar formato de imagen en el frontend
+  if (formData.profileImage instanceof File) {
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/heic', 'image/heif', 'image/webp', 'image/gif'];
+    if (!validImageTypes.includes(formData.profileImage.type)) {
+      Swal.fire({
+        title: '¡Error!',
+        text: 'La imagen de perfil debe ser un archivo JPEG, PNG, HEIC, WEBP o GIF.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+      return;
     }
+    if (formData.profileImage.size > 5 * 1024 * 1024) {
+      Swal.fire({
+        title: '¡Error!',
+        text: 'La imagen de perfil no debe exceder los 5MB.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+      return;
+    }
+  }
 
     const formattedData = {
       ...formData,
       birthDate: formData.dateInputValue,
     };
 
-    try {
-      if (editStudent) {
-        await updateEstudiante(formattedData);
+      try {
+    let result;
+    if (editStudent) {
+      result = await updateEstudiante(formattedData);
+      if (result.success) {
         Swal.fire({
           title: '¡Éxito!',
           text: 'El perfil del estudiante ha sido actualizado correctamente.',
@@ -409,25 +404,32 @@ const Student = () => {
           confirmButtonText: 'Aceptar',
         });
       } else {
-        await addEstudiante(formattedData);
+        throw new Error(result.message);
+      }
+    } else {
+      result = await addEstudiante(formattedData);
+      if (result.success) {
         Swal.fire({
           title: '¡Éxito!',
           text: 'El estudiante ha sido agregado correctamente.',
           icon: 'success',
           confirmButtonText: 'Aceptar',
         });
+      } else {
+        throw new Error(result.message);
       }
-      setShow(false);
-    } catch (error) {
-      console.error('Error en handleSubmit:', error);
-      Swal.fire({
-        title: '¡Error!',
-        text: error.message || 'Ocurrió un problema al guardar el estudiante. Por favor, intenta de nuevo.',
-        icon: 'error',
-        confirmButtonText: 'Aceptar',
-      });
     }
-  };
+    setShow(false);
+  } catch (error) {
+    console.error('Error capturado en handleSubmit:', error);
+    Swal.fire({
+      title: '¡Error!',
+      text: error.message || 'Ocurrió un problema al guardar el estudiante. Por favor, intenta de nuevo.',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+    });
+  }
+};
 
   const handleDelete = async (studentId) => {
     try {
