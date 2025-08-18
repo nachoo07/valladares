@@ -429,7 +429,7 @@ const importStudents = useCallback(async (studentList) => {
       }
     }
 
-    const response = await axios.post('http://localhost:4001/api/students/import', { students: formattedStudentList }, {
+    const response = await axios.post('/api/students/import', { students: formattedStudentList }, {
       withCredentials: true,
       headers: { 'Content-Type': 'application/json' },
     });
