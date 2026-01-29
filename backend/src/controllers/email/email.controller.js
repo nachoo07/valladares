@@ -94,9 +94,21 @@ export const sendEmail = async (req, res) => {
       return res.status(400).json({ message: "Máximo 100 destinatarios por solicitud" });
     }
 
-    const sanitizedMessage = sanitizeHtml(message, {
+
+    // Reemplazar saltos de línea por <br> para conservar formato
+    const messageWithBreaks = (typeof message === 'string') ? message.replace(/\n/g, '<br>') : message;
+    // Envolver el mensaje en un diseño HTML por defecto
+    const wrappedMessage = `
+      <div style=\"font-family: Arial, sans-serif; color: #222;\">
+        <div style=\"text-align: center; margin-bottom: 16px;\">
+          <img src=\"https://res.cloudinary.com/dqhb2dkgf/image/upload/v1740286370/Captura_de_pantalla_2025-02-11_a_la_s_9.29.34_p._m._bqndud.png\" alt=\"Logo Club\" style=\"width: 90px; height: auto; border-radius: 8px;\" />
+        </div>
+        <div>${messageWithBreaks}</div>
+      </div>
+    `;
+    const sanitizedMessage = sanitizeHtml(wrappedMessage, {
       allowedTags: ["b", "i", "em", "strong", "p", "br", "div", "span", "h1", "h2", "h3", "img"],
-      allowedAttributes: { img: ["src", "alt"] },
+      allowedAttributes: { img: ["src", "alt", "style"] },
     });
 
     const mailOptions = {
@@ -222,9 +234,20 @@ export const sendEmail = async (req, res) => {
         continue;
       }
 
-      const sanitizedMessage = sanitizeHtml(message, {
+
+      // Reemplazar saltos de línea por <br> para conservar formato
+      const messageWithBreaks = (typeof message === 'string') ? message.replace(/\n/g, '<br>') : message;
+      // Envolver el mensaje en un diseño HTML por defecto
+      const wrappedMessage = `
+        <div style=\"font-family: Arial, sans-serif; color: #222;\">
+          <div style=\"text-align: center; margin-bottom: 16px;\">
+          </div>
+          <div>${messageWithBreaks}</div>
+        </div>
+      `;
+      const sanitizedMessage = sanitizeHtml(wrappedMessage, {
         allowedTags: ["b", "i", "em", "strong", "p", "br", "div", "span", "h1", "h2", "h3", "img"],
-        allowedAttributes: { img: ["src", "alt"] },
+        allowedAttributes: { img: ["src", "alt", "style"] },
       });
 
       const mailOptions = {

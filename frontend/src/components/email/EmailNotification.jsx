@@ -541,6 +541,14 @@ const EmailNotification = () => {
               disabled={loading || isOverdueMode || dataLoading}
               placeholder="Mensaje..."
             />
+            {/* Vista previa del email */}
+            <div style={{marginTop: 24, border: '1px solid #eee', borderRadius: 8, padding: 16, background: '#fafafd'}}>
+              <div style={{fontWeight: 'bold', marginBottom: 8, color: '#333333'}}>Vista previa del email:</div>
+              <div
+                style={{whiteSpace: 'pre-line', fontFamily: 'inherit', fontSize: 16, color: '#222'}}
+                dangerouslySetInnerHTML={{__html: (displayMessage || '').replace(/\n/g, '<br>')}}
+              />
+            </div>
             <div className="email-actions">
               <button
                 className="quick-action-btn cancel-btn"

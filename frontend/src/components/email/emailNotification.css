@@ -305,6 +305,7 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .email-actions button {
