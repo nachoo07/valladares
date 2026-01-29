@@ -70,7 +70,7 @@ const StudentsProvider = ({ children }) => {
     }
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:4001/api/students', {
+      const response = await axios.get('/api/students', {
         withCredentials: true,
       });
       const data = Array.isArray(response.data) ? response.data : [];
@@ -102,7 +102,7 @@ const StudentsProvider = ({ children }) => {
     }
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:4001/api/students/${studentId}`, {
+      const response = await axios.get(`/api/students/${studentId}`, {
         withCredentials: true,
       });
       const student = {
@@ -169,7 +169,7 @@ const StudentsProvider = ({ children }) => {
         }
       });
 
-      const response = await axios.post('http://localhost:4001/api/students/create', formData, {
+      const response = await axios.post('/api/students/create', formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' },
       });
@@ -254,7 +254,7 @@ const StudentsProvider = ({ children }) => {
         cancelButtonText: 'Cancelar',
       });
       if (confirmacion.isConfirmed) {
-        await axios.delete(`http://localhost:4001/api/students/delete/${id}`, {
+        await axios.delete(`/api/students/delete/${id}`, {
           withCredentials: true,
         });
         setEstudiantes(prev => prev.filter(estudiante => estudiante._id !== id));

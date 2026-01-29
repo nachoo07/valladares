@@ -32,7 +32,7 @@ const EmailProvider = ({ children }) => {
         attachment: imageBase64,
       };
 
-      await axios.post('http://localhost:4001/api/email/send', emailData, { withCredentials: true });
+      await axios.post('/api/email/send', emailData, { withCredentials: true });
       Swal.fire('¡Éxito!', 'El comprobante ha sido enviado al correo del estudiante.', 'success');
     } catch (error) {
       console.error('Error al enviar el comprobante:', error);
@@ -49,7 +49,7 @@ const EmailProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        'http://localhost:4001/api/email/send',
+        '/api/email/send',
         { emails },
         { withCredentials: true }
       );

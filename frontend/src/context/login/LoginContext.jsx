@@ -39,7 +39,7 @@ export const LoginProvider = ({ children }) => {
 
     try {
       setLoading(true);
-      await axios.post('http://localhost:4001/api/auth/refresh', {}, { withCredentials: true });
+      await axios.post('api/auth/refresh', {}, { withCredentials: true });
       setAuth(authRole);
       setUserData({ name: authName });
     } catch (error) {
@@ -65,7 +65,7 @@ export const LoginProvider = ({ children }) => {
   const login = async (mail, password) => {
     try {
       const response = await axios.post(
-        'http://localhost:4001/api/auth/login',
+        '/api/auth/login',
         { mail, password },
         { withCredentials: true }
       );
@@ -90,7 +90,7 @@ export const LoginProvider = ({ children }) => {
       setUserData(null);
       localStorage.removeItem('authRole');
       localStorage.removeItem('authName');
-      await axios.post('http://localhost:4001/api/auth/logout', {}, { withCredentials: true });
+      await axios.post('/api/auth/logout', {}, { withCredentials: true });
       navigate('/login', { replace: true });
     } catch (error) {
       console.error('Error en logout:', error);
@@ -101,7 +101,7 @@ export const LoginProvider = ({ children }) => {
 
   const refreshAccessToken = async () => {
     try {
-      await axios.post('http://localhost:4001/api/auth/refresh', {}, { withCredentials: true });
+      await axios.post('/api/auth/refresh', {}, { withCredentials: true });
     } catch (error) {
       console.error('Error al renovar token:', error.response?.data || error.message);
       logout();
