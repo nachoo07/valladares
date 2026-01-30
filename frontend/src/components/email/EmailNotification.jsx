@@ -317,13 +317,11 @@ const EmailNotification = () => {
 
     const emails = isOverdueMode
       ? generateOverdueMessages(selectedStudents)
-      : [
-          {
-            recipient: selectedStudents.map((s) => s.mail).join(","),
-            subject,
-            message: displayMessage || "Mensaje no especificado",
-          },
-      ];
+      : selectedStudents.map((s) => ({
+          recipient: s.mail,
+          subject,
+          message: displayMessage || "Mensaje no especificado",
+        }));
 
     if (emails.length === 0) {
       Swal.fire(
@@ -346,11 +344,49 @@ const EmailNotification = () => {
     if (!confirm.isConfirmed) return;
 
     setLoading(true);
+    const batchSize = 100;
+    let sent = 0;
+    let failed = 0;
+    let failedRecipients = [];
     try {
-      await sendMultipleEmails(emails);
-      Swal.fire("¡Éxito!", `Se enviaron ${emails.length} correos correctamente.`, "success");
-      handleCancel();
+      for (let i = 0; i < emails.length; i += batchSize) {
+        const batch = emails.slice(i, i + batchSize);
+        try {
+          // eslint-disable-next-line no-await-in-loop
+          await sendMultipleEmails(batch);
+          sent += batch.length;
+        } catch (error) {
+          failed += batch.length;
+          if (error.response && error.response.data && error.response.data.failed) {
+            failedRecipients = failedRecipients.concat(error.response.data.failed.map(f => f.recipient));
+          }
+        }
+        // Mostrar progreso
+        Swal.fire({
+          title: `Enviando correos...`,
+          html: `Enviados: ${sent} / ${emails.length}`,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+      }
+      // Cerrar spinner antes de mostrar resultado final
+      Swal.close();
+      setTimeout(() => {
+        if (failed === 0) {
+          Swal.fire("¡Éxito!", `Se enviaron ${sent} correos correctamente.`, "success");
+          handleCancel();
+        } else {
+          Swal.fire(
+            "Envío parcial",
+            `Se enviaron ${sent} correos correctamente. Fallaron ${failed} (${failedRecipients.join(", ")})`,
+            "warning"
+          );
+        }
+      }, 200);
     } catch (error) {
+      Swal.close();
       Swal.fire("Error", error.message, "error");
     } finally {
       setLoading(false);

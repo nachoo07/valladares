@@ -39,7 +39,7 @@ export const LoginProvider = ({ children }) => {
 
     try {
       setLoading(true);
-      await axios.post('api/auth/refresh', {}, { withCredentials: true });
+      await axios.post('/api/auth/refresh', {}, { withCredentials: true });
       setAuth(authRole);
       setUserData({ name: authName });
     } catch (error) {
